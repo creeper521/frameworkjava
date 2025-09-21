@@ -4,6 +4,11 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/bite-mstemplate/pom.xml" />
+        <option value="$PROJECT_DIR$/bite-mstemplate/bite-mstemplate-api/pom.xml" />
+        <option value="$PROJECT_DIR$/bite-common/pom.xml" />
+        <option value="$PROJECT_DIR$/bite-common/bite-common-core/pom.xml" />
+        <option value="$PROJECT_DIR$/bite-mstemplate/bite-mstemplate-service/pom.xml" />
       </list>
     </option>
   </component>
