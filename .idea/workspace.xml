@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c4cb5ca-78b9-493b-8fc9-4d440bacf283" name="变更" comment="" />
+    <list default="true" id="1c4cb5ca-78b9-493b-8fc9-4d440bacf283" name="变更" comment="">
+      <change afterPath="$PROJECT_DIR$/bite-common/bite.common.domain/src/main/java/com/bitejiuyeke/bitecommondomain/domain/R.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,6 +48,7 @@
   <component name="ProjectId" id="32uORku4C9fh5SW2YtZm5B5xWx4" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="2" id="Remove" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -183,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1758424923579</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="up">
+      <created>1758506349500</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1758506349500</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
