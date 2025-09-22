@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/bite-common/pom.xml" />
         <option value="$PROJECT_DIR$/bite-common/bite-common-core/pom.xml" />
         <option value="$PROJECT_DIR$/bite-mstemplate/bite-mstemplate-service/pom.xml" />
+        <option value="$PROJECT_DIR$/bite-common/bite.common.domain/pom.xml" />
       </list>
     </option>
   </component>

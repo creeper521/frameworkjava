@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="bite-mstemplate-api" />
         <module name="bite-common-core" />
+        <module name="bite.common.domain" />
         <module name="bite-mstemplate-service" />
       </profile>
     </annotationProcessing>
@@ -18,6 +19,7 @@
       <module name="bite-mstemplate" target="17" />
       <module name="bite-mstemplate-api" target="17" />
       <module name="bite-mstemplate-service" target="17" />
+      <module name="bite.common.domain" target="17" />
       <module name="frameworkjava" target="17" />
     </bytecodeTargetLevel>
   </component>
@@ -26,6 +28,7 @@
       <module name="bite-common-core" options="-parameters" />
       <module name="bite-mstemplate-api" options="-parameters" />
       <module name="bite-mstemplate-service" options="-parameters" />
+      <module name="bite.common.domain" options="-parameters" />
     </option>
   </component>
 </project>
