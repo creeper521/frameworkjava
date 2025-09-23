@@ -74,13 +74,51 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\code\frameworkjava\bite-mstemplate\bite-mstemplate-service\src\main\java\com\example\bitemstemplateservice" />
       <recent name="D:\code\frameworkjava\bite-mstemplate\bite-mstemplate-service\src\main\resources" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.bitejiuyeke.bitemstemplateservice" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.bitejiuyeke.bitecommoncore.utils" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.BiteMstemplateServiceApplication">
+  <component name="RunManager" selected="应用程序.BiteMstemplateServiceApplication (1)">
+    <configuration name="BiteGatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="NACOS_ADDR" value="http://192.168.56.107:8848" />
+        <env name="RUN_ENV" value="dev " />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="com.bitejiuyeke.bitegateway.BiteGatewayApplication" />
+      <module name="bite-gateway" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bitejiuyeke.bitegateway.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BiteMstemplateServiceApplication (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="NACOS_ADDR" value="http://192.168.56.107:8848" />
+        <env name="RUN_ENV" value="dev " />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="com.bitejiuyeke.bitemstemplateservice.BiteMstemplateServiceApplication" />
+      <module name="bite-mstemplate-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bitejiuyeke.bitemstemplateservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BiteMstemplateServiceApplication" type="Application" factoryName="Application" nameIsGenerated="true">
       <envs>
         <env name="NACOS_ADDR" value="http://192.168.56.107:8848" />
@@ -94,22 +132,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JsonUtilTests.obj2StringTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bite-common-core" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bitejiuyeke.bitcommoncore.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.bitejiuyeke.bitcommoncore" />
-      <option name="MAIN_CLASS_NAME" value="com.bitejiuyeke.bitcommoncore.JsonUtilTests" />
-      <option name="METHOD_NAME" value="obj2StringTest" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -164,10 +186,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.BiteMstemplateServiceApplication (1)" />
+        <item itemvalue="应用程序.BiteGatewayApplication" />
         <item itemvalue="JUnit.JsonUtilTests.string2ComplexList" />
         <item itemvalue="JUnit.JsonUtilTests.string2ListTest" />
         <item itemvalue="JUnit.JsonUtilTests.string2ObjTest" />
-        <item itemvalue="JUnit.JsonUtilTests.obj2StringTest" />
       </list>
     </recent_temporary>
   </component>
@@ -194,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1758506349500</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="up">
+      <created>1758534263764</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1758534263764</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
