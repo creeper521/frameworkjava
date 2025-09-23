@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="bite-mstemplate-api" />
+        <module name="bite-common-security" />
         <module name="bite-common-core" />
         <module name="bite-gateway" />
         <module name="bite.common.domain" />
@@ -17,6 +18,7 @@
     <bytecodeTargetLevel>
       <module name="bite-common" target="17" />
       <module name="bite-common-core" target="17" />
+      <module name="bite-common-security" target="17" />
       <module name="bite-gateway" target="17" />
       <module name="bite-mstemplate" target="17" />
       <module name="bite-mstemplate-api" target="17" />
@@ -28,6 +30,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="bite-common-core" options="-parameters" />
+      <module name="bite-common-security" options="-parameters" />
       <module name="bite-gateway" options="-parameters" />
       <module name="bite-mstemplate-api" options="-parameters" />
       <module name="bite-mstemplate-service" options="-parameters" />
