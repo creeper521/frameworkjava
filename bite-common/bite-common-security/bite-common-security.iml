@@ -44,7 +44,7 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:6.1.12" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:6.1.12" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:6.1.12" level="project" />
-    <orderEntry type="module" module-name="bite.common.domain" />
+    <orderEntry type="module" module-name="bite-common-domain" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.34" level="project" />
     <orderEntry type="module" module-name="bite-common-core" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.14.0" level="project" />
