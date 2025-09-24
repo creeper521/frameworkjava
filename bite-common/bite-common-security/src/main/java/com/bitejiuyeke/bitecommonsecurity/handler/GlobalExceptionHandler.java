@@ -1,6 +1,7 @@
 package com.bitejiuyeke.bitecommonsecurity.handler;
 import com.bitejiuyeke.bitecommondomain.domain.ResultCode;
 import com.bitejiuyeke.bitecommondomain.domain.R;
+import com.bitejiuyeke.bitecommondomain.exception.ServiceException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -66,6 +67,26 @@ public class GlobalExceptionHandler {
         return R.fail(ResultCode.PARA_TYPE_MISMATCH.getCode(),
                 ResultCode.PARA_TYPE_MISMATCH.getMsg());
     }
+
+    /**
+     * 业务异常(微服务侧)
+     *
+     * @param e 异常信息
+     * @param request 请求
+     * @param response 响应
+     * @return 响应结果
+     */
+    @ExceptionHandler(ServiceException.class)
+    public R<?> handleServiceException(ServiceException e, HttpServletResponse response, HttpServletRequest request){
+        String requestURI = request.getRequestURI();
+        log.error("请求地址'{}',发生异常",requestURI, e);
+        setResponseCode(response, e.getCode());
+        return R.fail(e.getCode(), e.getMessage());
+    }
+
+
+
+
     /**
      * url未找到异常
      *
