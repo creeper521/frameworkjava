@@ -5,11 +5,19 @@ import com.bitejiuyeke.bitecommondomain.exception.ServiceException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.CollectionUtils;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
+
+import java.security.cert.CertPathValidatorException;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * 全局异常处理器
  */
@@ -85,6 +93,60 @@ public class GlobalExceptionHandler {
     }
 
 
+    /**
+     * 参数校验异常
+     *
+     * @param e 异常信息
+     * @param request 请求
+     * @param response 响应
+     * @return 异常报文
+     */
+    @ExceptionHandler({MethodArgumentNotValidException.class})
+    public R<?> handleMethodArgumentNotValidException(
+            MethodArgumentNotValidException e,
+            HttpServletResponse response,
+            HttpServletRequest request
+    ){
+        String requestURI = request.getRequestURI();
+        log.error("请求地址'{}',参数校验失败",requestURI, e);
+        setResponseCode(response, ResultCode.INVALID_PARA.getCode());
+        String message = joinMessage(e);
+        return R.fail(ResultCode.INVALID_PARA.getCode(), message);
+    }
+
+    /**
+     * 参数校验异常
+     * @param e 异常信息
+     * @param request 请求
+     * @param response 响应
+     * @return 异常报文
+     */
+    @ExceptionHandler({CertPathValidatorException.class})
+    public R<?> handleConstraintViolationException(CertPathValidatorException e,
+              HttpServletResponse response,
+              HttpServletRequest request){
+        String requestURI = request.getRequestURI();
+        log.error("请求地址'{}',参数校验失败",requestURI, e);
+        setResponseCode(response, ResultCode.INVALID_PARA.getCode());
+        String message = e.getMessage();
+        return R.fail(ResultCode.INVALID_PARA.getCode(), e.getMessage());
+    }
+
+
+    /**
+     * 异常信息拼接
+     * @param e 异常信息
+     * @return 拼接好的异常信息
+     */
+    private String joinMessage(MethodArgumentNotValidException e) {
+        List<ObjectError> allErrors = e.getAllErrors();
+        if(CollectionUtils.isEmpty(allErrors)){
+            return "";
+        }
+        return allErrors.stream()
+                        .map(ObjectError::getDefaultMessage)
+                        .collect(Collectors.joining(","));
+    }
 
 
     /**
@@ -95,10 +157,7 @@ public class GlobalExceptionHandler {
      * @return 异常结果
      */
     @ExceptionHandler({NoResourceFoundException.class})
-    public R<?> handleMethodNoResourceFoundException(NoResourceFoundException
-                                                             e,
-                                                     HttpServletResponse
-                                                             response) {
+    public R<?> handleMethodNoResourceFoundException(NoResourceFoundException e, HttpServletResponse response) {
         log.error("url未找到异常",e);
         setResponseCode(response, ResultCode.URL_NOT_FOUND.getCode());
         return R.fail(ResultCode.URL_NOT_FOUND.getCode(),

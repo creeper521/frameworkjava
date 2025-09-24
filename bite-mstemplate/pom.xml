@@ -17,4 +17,5 @@
         <module>bite-mstemplate-api</module>
         <module>bite-mstemplate-service</module>
     </modules>
+
 </project>
