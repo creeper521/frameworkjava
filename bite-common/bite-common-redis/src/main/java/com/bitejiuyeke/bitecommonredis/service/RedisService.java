@@ -4,13 +4,13 @@ package com.bitejiuyeke.bitecommonredis.service;
 import com.bitejiuyeke.bitecommoncore.utils.JsonUtil;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 
 import java.lang.ref.Reference;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -257,5 +257,215 @@ public class RedisService {
      */
     public <T> void setElementAtIndex(final String key, int index, T value){
         redisTemplate.opsForList().set(key, index, value);
+    }
+
+    /**
+     * 获取List类等
+     * @param key
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public <T> List<T> getCacheList(final String key, Class<T> clazz){
+        List list = redisTemplate.opsForList().range(key, 0, -1);
+        return JsonUtil.string2List(JsonUtil.obj2String(list), clazz);
+    }
+
+    /**
+     * 获取List类等
+     * @param key
+     * @param reference
+     * @param <T>
+     * @return
+     */
+    public <T> List<T> getCacheList(final String key, TypeReference<List<T>>  reference){
+        List list = redisTemplate.opsForList().range(key, 0, -1);
+        List<T> res = JsonUtil.string2Obj(JsonUtil.obj2String(list), reference);
+        return res;
+    }
+
+    /**
+     * 根据范围获取List类等
+     * @param key
+     * @param start
+     * @param end
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public <T> List<T> getCacheListByRange(final String key, long start,
+                                           long end, Class<T> clazz){
+        List range = redisTemplate.opsForList().range(key, start, end);
+        return JsonUtil.string2List(JsonUtil.obj2String(range), clazz);
+    }
+
+    /**
+     * 获取List类等长度
+     * @param key
+     * @return
+     */
+    public long getCacheListSize(final String key){
+        Long size = redisTemplate.opsForList().size(key);
+        return size == null ? 0L : size;
+    }
+
+
+    /**
+     * 缓存set类
+     * @param key
+     * @param member
+     */
+    public void addMember(final String key, Object... member){
+        redisTemplate.opsForSet().add(key, member);
+    }
+
+    /**
+     * 删除set类
+     * @param key
+     * @param member
+     */
+    public void deleteMember(final String key, Object... member){
+        redisTemplate.opsForSet().remove(key, member);
+    }
+
+    /**
+     * 获取缓存set类
+     * @param key
+     * @param reference
+     * @param <T>
+     * @return
+     */
+    public <T> Set<T> getCacheSet(final String key, TypeReference<Set<T>> reference){
+        Set data = redisTemplate.opsForSet().members(key);
+        return JsonUtil.string2Obj(JsonUtil.obj2String(data), reference);
+    }
+
+    /**
+     * 添加元素
+     * @param key
+     * @param value
+     * @param seqNo
+     */
+    public void addMemberZSet(String key, Object value, double seqNo){
+        redisTemplate.opsForZSet().add(key, value, seqNo);
+    }
+
+    /**
+     * 删除元素
+     * @param key
+     * @param value
+     */
+    public void deleteMemberZSet(String key, Object value){
+        redisTemplate.opsForZSet().remove(key, value);
+    }
+
+    /**
+     * 删除指定区域分值
+     * @param key
+     * @param minScore
+     * @param maxScore
+     */
+    public void removeZSetByScore(final String key, double minScore,
+                                  double maxScore){
+        redisTemplate.opsForZSet().removeRangeByScore(key, minScore, maxScore);
+    }
+
+    /**
+     * 获取有序数据集合(支持复杂嵌套)
+     * @param key
+     * @param reference
+     * @param <T>
+     * @return
+     */
+    public <T> Set<T> getCacheZSet(final String key, TypeReference<LinkedHashSet<T>> reference){
+        Set data = redisTemplate.opsForZSet().range(key, 0, -1);
+        return JsonUtil.string2Obj(JsonUtil.obj2String(data), reference);
+    }
+
+    /**
+     * 获取有序数据集合(倒序)
+     * @param key
+     * @param reference
+     * @param <T>
+     * @return
+     */
+    public <T> Set<T> getCacheZSetDesc(final String key, TypeReference<LinkedHashSet<T>> reference){
+        Set data = redisTemplate.opsForZSet().reverseRange(key, 0, -1);
+        return JsonUtil.string2Obj(JsonUtil.obj2String(data), reference);
+    }
+
+
+    /**
+     * 缓存Map类
+     * @param key
+     * @param map
+     * @param <T>
+     */
+    public <T> void setCacheMap(final String key, final Map<String, T> map){
+        if(map != null){
+            redisTemplate.opsForHash().putAll(key, map);
+        }
+    }
+
+    /**
+     * 往Hash中缓存单个数据
+     * @param key
+     * @param hashKey
+     * @param value
+     * @param <T>
+     */
+    public <T> void setCacheMapValue(final String key,
+                                     final String hashKey,
+                                     final T value){
+        redisTemplate.opsForHash().put(key, hashKey, value);
+    }
+
+    /**
+     * 删除Hash中数据
+     * @param key
+     * @param hashKey
+     * @return
+     */
+    public boolean deleteCacheMapValue(final String key, final String hashKey){
+        return redisTemplate.opsForHash().delete(key, hashKey) > 0;
+    }
+
+    /**
+     * 获取Hash类(支持复杂嵌套)
+     * @param key
+     * @param reference
+     * @param <T>
+     * @return
+     */
+    public <T> Map<String, T> getCacheMap(final String key, TypeReference<Map<String, T>>  reference){
+        Map data = redisTemplate.opsForHash().entries(key);
+        return JsonUtil.string2Obj(JsonUtil.obj2String(data), reference);
+    }
+
+    /**
+     * 获取Hash类中数据
+     * @param key
+     * @param hashKey
+     * @param <T>
+     * @return
+     */
+    public <T> T getCacheMapValue(final String key, final String hashKey){
+        HashOperations<String, String, T> opsForHash =
+                redisTemplate.opsForHash();
+                return opsForHash.get(key, hashKey);
+    }
+
+
+    /**
+     * 获取多个Hash类中数据
+     * @param key
+     * @param hKeys
+     * @param <T>
+     * @return
+     */
+    public <T> List<T> getMultiCacheMapValue(final String key, final
+    Collection<Object> hKeys,TypeReference<List<T>> typeReference) {
+        List data = redisTemplate.opsForHash().multiGet(key, hKeys);
+        return JsonUtil.string2Obj(JsonUtil.obj2String(data), typeReference);
     }
 }
