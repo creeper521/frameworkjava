@@ -11,6 +11,7 @@
         <module name="bite-common-security" />
         <module name="bite-common-core" />
         <module name="bite-common-domain" />
+        <module name="bite-common-redis" />
         <module name="bite-gateway" />
         <module name="bite-mstemplate-service" />
       </profile>
@@ -19,6 +20,7 @@
       <module name="bite-common" target="17" />
       <module name="bite-common-core" target="17" />
       <module name="bite-common-domain" target="17" />
+      <module name="bite-common-redis" target="17" />
       <module name="bite-common-security" target="17" />
       <module name="bite-gateway" target="17" />
       <module name="bite-mstemplate" target="17" />
@@ -31,6 +33,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="bite-common-core" options="-parameters" />
       <module name="bite-common-domain" options="-parameters" />
+      <module name="bite-common-redis" options="-parameters" />
       <module name="bite-common-security" options="-parameters" />
       <module name="bite-gateway" options="-parameters" />
       <module name="bite-mstemplate-api" options="-parameters" />

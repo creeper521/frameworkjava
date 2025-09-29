@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/bite-common/bite-common.iml" filepath="$PROJECT_DIR$/bite-common/bite-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/bite-common/bite-common-core/bite-common-core.iml" filepath="$PROJECT_DIR$/bite-common/bite-common-core/bite-common-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/bite-common/bite.common.domain/bite-common-domain.iml" filepath="$PROJECT_DIR$/bite-common/bite.common.domain/bite-common-domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bite-common/bite-common-redis/bite-common-redis.iml" filepath="$PROJECT_DIR$/bite-common/bite-common-redis/bite-common-redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/bite-common/bite-common-security/bite-common-security.iml" filepath="$PROJECT_DIR$/bite-common/bite-common-security/bite-common-security.iml" />
       <module fileurl="file://$PROJECT_DIR$/bite-gateway/bite-gateway.iml" filepath="$PROJECT_DIR$/bite-gateway/bite-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/bite-mstemplate/bite-mstemplate.iml" filepath="$PROJECT_DIR$/bite-mstemplate/bite-mstemplate.iml" />
