@@ -3,10 +3,12 @@ package com.bitejiuyeke.bitecommonredis.service;
 
 import com.bitejiuyeke.bitecommoncore.utils.JsonUtil;
 import com.fasterxml.jackson.core.type.TypeReference;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.stereotype.Component;
 
 import java.lang.ref.Reference;
@@ -467,5 +469,27 @@ public class RedisService {
     Collection<Object> hKeys,TypeReference<List<T>> typeReference) {
         List data = redisTemplate.opsForHash().multiGet(key, hKeys);
         return JsonUtil.string2Obj(JsonUtil.obj2String(data), typeReference);
+    }
+
+
+    /**
+     * 删除指定值对应的 Redis 中的键值（compare and delete）
+     *
+     * @param key 缓存key
+     * @param value value
+     * @return 是否完成了⽐较并删除
+     */
+    public boolean cad(String key, String value) {
+        if (key.contains(StringUtils.SPACE) || value.contains(StringUtils.SPACE))
+        {
+            return false;
+        }
+        String script = "if redis.call('get', KEYS[1]) == ARGV[1] then return redis.call('del', KEYS[1]) else return 0 end";
+        // 通过lua脚本原⼦验证令牌和删除令牌
+        Long result = (Long) redisTemplate.execute(new DefaultRedisScript<>
+                        (script, Long.class),
+                Collections.singletonList(key),
+                value);
+        return !Objects.equals(result, 0L);
     }
 }
