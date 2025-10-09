@@ -1,6 +1,8 @@
 package com.bitejiuyeke.bitecommoncore.utils;
 
 
+import org.springframework.beans.BeanUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
@@ -8,7 +10,7 @@ import java.util.function.Supplier;
 import static org.springframework.beans.BeanUtils.copyProperties;
 
 
-public class BeanCopyUtil {
+public class BeanCopyUtil extends BeanUtils {
 
     /**
      * 集合数据的拷贝

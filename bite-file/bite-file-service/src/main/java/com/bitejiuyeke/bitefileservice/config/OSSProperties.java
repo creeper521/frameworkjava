@@ -47,6 +47,12 @@ public class OSSProperties {
      * 路径前缀，加在 endPoint 之后
      */
     private String pathPrefix;
+
+    private Integer expre;
+
+    private Integer minLen;
+
+    private Integer maxLen;
     /**
      * 获取访问URL
      *

@@ -26,7 +26,7 @@ public class OSSAutoConfiguration {
     /**
      * 初始化客⼾端
      * @param prop oss配置
-     * @return ossclient
+     * @return ossClient
      * @throws ClientException 客⼾端异常
      */
     @Bean
