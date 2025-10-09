@@ -9,9 +9,9 @@
       <module fileurl="file://$PROJECT_DIR$/bite-common/bite-common-rabbitmq/bite-common-rabbitmq.iml" filepath="$PROJECT_DIR$/bite-common/bite-common-rabbitmq/bite-common-rabbitmq.iml" />
       <module fileurl="file://$PROJECT_DIR$/bite-common/bite-common-redis/bite-common-redis.iml" filepath="$PROJECT_DIR$/bite-common/bite-common-redis/bite-common-redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/bite-common/bite-common-security/bite-common-security.iml" filepath="$PROJECT_DIR$/bite-common/bite-common-security/bite-common-security.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bite-common/bite-file/bite-file.iml" filepath="$PROJECT_DIR$/bite-common/bite-file/bite-file.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bite-common/bite-file/bite-file-api/bite-file-api.iml" filepath="$PROJECT_DIR$/bite-common/bite-file/bite-file-api/bite-file-api.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bite-common/bite-file/bite-file-service/bite-file-service.iml" filepath="$PROJECT_DIR$/bite-common/bite-file/bite-file-service/bite-file-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bite-file/bite-file.iml" filepath="$PROJECT_DIR$/bite-file/bite-file.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bite-file/bite-file-api/bite-file-api.iml" filepath="$PROJECT_DIR$/bite-file/bite-file-api/bite-file-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bite-file/bite-file-service/bite-file-service.iml" filepath="$PROJECT_DIR$/bite-file/bite-file-service/bite-file-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/bite-gateway/bite-gateway.iml" filepath="$PROJECT_DIR$/bite-gateway/bite-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/bite-mstemplate/bite-mstemplate.iml" filepath="$PROJECT_DIR$/bite-mstemplate/bite-mstemplate.iml" />
       <module fileurl="file://$PROJECT_DIR$/bite-mstemplate/bite-mstemplate-api/bite-mstemplate-api.iml" filepath="$PROJECT_DIR$/bite-mstemplate/bite-mstemplate-api/bite-mstemplate-api.iml" />
