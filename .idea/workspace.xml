@@ -89,7 +89,24 @@
       <recent name="com.bitejiuyeke.bitecommoncore.utils" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.BiteMstemplateServiceApplication">
+  <component name="RunManager" selected="应用程序.BiteGatewayApplication">
+    <configuration name="BiteFileServiceApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+      <envs>
+        <env name="NACOS_ADDR" value="http://192.168.56.107:8848" />
+        <env name="RUN_ENV" value="dev" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="com.bitejiuyeke.bitefileservice.BiteFileServiceApplication" />
+      <module name="bite-file-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bitejiuyeke.bitefileservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BiteGatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <envs>
         <env name="NACOS_ADDR" value="http://192.168.56.107:8848" />
@@ -110,7 +127,7 @@
     <configuration name="BiteMstemplateServiceApplication (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <envs>
         <env name="NACOS_ADDR" value="http://192.168.56.107:8848" />
-        <env name="RUN_ENV" value="dev " />
+        <env name="RUN_ENV" value="dev" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="com.bitejiuyeke.bitemstemplateservice.BiteMstemplateServiceApplication" />
       <module name="bite-mstemplate-service" />
@@ -175,6 +192,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="OSSFileServiceImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.bitejiuyeke.bitefileservice.service.impl.OSSFileServiceImpl" />
+      <module name="bite-file-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bitejiuyeke.bitefileservice.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="JsonUtilTests.string2ComplexList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bite-common-core" />
       <extension name="coverage">
@@ -186,22 +216,6 @@
       <option name="PACKAGE_NAME" value="com.bitejiuyeke.bitcommoncore" />
       <option name="MAIN_CLASS_NAME" value="com.bitejiuyeke.bitcommoncore.JsonUtilTests" />
       <option name="METHOD_NAME" value="string2ComplexList" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JsonUtilTests.string2ListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="bite-common-core" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bitejiuyeke.bitcommoncore.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.bitejiuyeke.bitcommoncore" />
-      <option name="MAIN_CLASS_NAME" value="com.bitejiuyeke.bitcommoncore.JsonUtilTests" />
-      <option name="METHOD_NAME" value="string2ListTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -225,19 +239,20 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.JsonUtilTests.string2ComplexList" />
-      <item itemvalue="JUnit.JsonUtilTests.string2ListTest" />
       <item itemvalue="JUnit.JsonUtilTests.string2ObjTest" />
       <item itemvalue="应用程序.BiteMstemplateServiceApplication" />
+      <item itemvalue="应用程序.BiteFileServiceApplication" />
       <item itemvalue="应用程序.BiteMstemplateServiceApplication (1)" />
       <item itemvalue="应用程序.BiteGatewayApplication" />
+      <item itemvalue="应用程序.OSSFileServiceImpl" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.BiteMstemplateServiceApplication" />
         <item itemvalue="应用程序.BiteGatewayApplication" />
+        <item itemvalue="应用程序.BiteMstemplateServiceApplication (1)" />
+        <item itemvalue="应用程序.OSSFileServiceImpl" />
         <item itemvalue="应用程序.BiteMstemplateServiceApplication" />
-        <item itemvalue="JUnit.JsonUtilTests.string2ComplexList" />
-        <item itemvalue="JUnit.JsonUtilTests.string2ListTest" />
+        <item itemvalue="应用程序.BiteMstemplateServiceApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -348,7 +363,14 @@
       <option name="project" value="LOCAL" />
       <updated>1759973364387</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="up">
+      <created>1759981706436</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1759981706436</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

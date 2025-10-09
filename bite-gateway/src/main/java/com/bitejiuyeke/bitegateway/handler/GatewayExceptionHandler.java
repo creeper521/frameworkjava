@@ -15,6 +15,7 @@ import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.web.reactive.resource.NoResourceFoundException;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
+
 /**
  * ⽹关统⼀异常处理
  */
@@ -22,17 +23,17 @@ import reactor.core.publisher.Mono;
 @Configuration
 @Slf4j
 public class GatewayExceptionHandler implements ErrorWebExceptionHandler {
-/**
- * 处理器
- *
- * @param exchange ServerWebExchange
- * @param ex 异常信息
- * @return ⽆
- */
+    /**
+     * 处理器
+     *
+     * @param exchange ServerWebExchange
+     * @param ex       异常信息
+     * @return ⽆
+     */
     @Override
     public Mono<Void> handle(ServerWebExchange exchange, Throwable ex) {
         ServerHttpResponse response = exchange.getResponse();
-//响应已经提交到客⼾端，⽆法再对这个响应进⾏常规的异常处理修改了，直接返回⼀个含原始异常ex的Mono.error(ex)
+        //响应已经提交到客⼾端，⽆法再对这个响应进⾏常规的异常处理修改了，直接返回⼀个含原始异常ex的Mono.error(ex)
         if (response.isCommitted()) {
             return Mono.error(ex);
         }
@@ -44,19 +45,21 @@ public class GatewayExceptionHandler implements ErrorWebExceptionHandler {
         } else {
             retMsg = ResultCode.ERROR.getMsg();
         }
-//按照统⼀状态码的特点，前三位是http状态码。从中截取http状态码
+        //按照统⼀状态码的特点，前三位是http状态码。从中截取http状态码
         int httpCode =
-                Integer.parseInt(String.valueOf(retCode).substring(0,3));
+                Integer.parseInt(String.valueOf(retCode).substring(0, 3));
         log.error("[⽹关异常处理]请求路径:{},异常信息:{}", exchange.getRequest().
                 getPath(), ex.getMessage());
         return webFluxResponseWriter(response,
-                HttpStatus.valueOf(httpCode),retMsg, retCode);
+                HttpStatus.valueOf(httpCode), retMsg, retCode);
     }
+
     private static Mono<Void> webFluxResponseWriter(ServerHttpResponse
                                                             response, HttpStatus status, Object value, int code) {
         return webFluxResponseWriter(response,
                 MediaType.APPLICATION_JSON_VALUE, status, value, code);
     }
+
     private static Mono<Void> webFluxResponseWriter(ServerHttpResponse
                                                             response, String contentType, HttpStatus status, Object value, int code) {
         response.setStatusCode(status); //设置http响应
