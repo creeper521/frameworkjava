@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/bite-admin/bite-admin.iml" filepath="$PROJECT_DIR$/bite-admin/bite-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bite-admin/bite-admin-api/bite-admin-api.iml" filepath="$PROJECT_DIR$/bite-admin/bite-admin-api/bite-admin-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bite-admin/bite-admin-service/bite-admin-service.iml" filepath="$PROJECT_DIR$/bite-admin/bite-admin-service/bite-admin-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/bite-common/bite-common.iml" filepath="$PROJECT_DIR$/bite-common/bite-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/bite-common/bite-common-cache/bite-common-cache.iml" filepath="$PROJECT_DIR$/bite-common/bite-common-cache/bite-common-cache.iml" />
       <module fileurl="file://$PROJECT_DIR$/bite-common/bite-common-core/bite-common-core.iml" filepath="$PROJECT_DIR$/bite-common/bite-common-core/bite-common-core.iml" />

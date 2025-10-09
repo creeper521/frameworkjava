@@ -21,6 +21,9 @@
         <option value="$PROJECT_DIR$/bite-file/pom.xml" />
         <option value="$PROJECT_DIR$/bite-file/bite-file-service/pom.xml" />
         <option value="$PROJECT_DIR$/bite-file/bite-file-api/pom.xml" />
+        <option value="$PROJECT_DIR$/bite-admin/pom.xml" />
+        <option value="$PROJECT_DIR$/bite-admin/bite-admin-api/pom.xml" />
+        <option value="$PROJECT_DIR$/bite-admin/bite-admin-service/pom.xml" />
       </list>
     </option>
   </component>

@@ -89,7 +89,24 @@
       <recent name="com.bitejiuyeke.bitecommoncore.utils" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.BiteGatewayApplication">
+  <component name="RunManager" selected="应用程序.BiteAdminServiceApplication">
+    <configuration name="BiteAdminServiceApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+      <envs>
+        <env name="NACOS_ADDR" value="http://192.168.56.107:8848" />
+        <env name="RUN_ENV" value="dev" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="com.bitejiuyeke.biteadminservice.BiteAdminServiceApplication" />
+      <module name="bite-admin-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bitejiuyeke.biteadminservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BiteFileServiceApplication" type="Application" factoryName="Application" nameIsGenerated="true">
       <envs>
         <env name="NACOS_ADDR" value="http://192.168.56.107:8848" />
@@ -240,11 +257,12 @@
     <list>
       <item itemvalue="JUnit.JsonUtilTests.string2ComplexList" />
       <item itemvalue="JUnit.JsonUtilTests.string2ObjTest" />
-      <item itemvalue="应用程序.BiteMstemplateServiceApplication" />
       <item itemvalue="应用程序.BiteFileServiceApplication" />
-      <item itemvalue="应用程序.BiteMstemplateServiceApplication (1)" />
+      <item itemvalue="应用程序.BiteMstemplateServiceApplication" />
       <item itemvalue="应用程序.BiteGatewayApplication" />
+      <item itemvalue="应用程序.BiteMstemplateServiceApplication (1)" />
       <item itemvalue="应用程序.OSSFileServiceImpl" />
+      <item itemvalue="应用程序.BiteAdminServiceApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -370,7 +388,14 @@
       <option name="project" value="LOCAL" />
       <updated>1759981706436</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="up">
+      <created>1759998990757</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1759998990757</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
