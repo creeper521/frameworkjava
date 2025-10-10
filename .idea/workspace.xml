@@ -14,6 +14,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -62,14 +63,18 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="17" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/bite-gateway/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/bite-admin/bite-admin-api/src/main/java/com/bitejiuyeke/biteadminapi/map" />
     <property name="project.structure.last.edited" value="模块" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\code\frameworkjava\bite-admin\bite-admin-api\src\main\java\com\bitejiuyeke\biteadminapi\map" />
+      <recent name="D:\code\frameworkjava\bite-admin\bite-admin-api\src\main\java\com\bitejiuyeke\biteadminapi\config" />
+      <recent name="D:\code\frameworkjava\bite-admin\bite-admin-service\src\main\java\com\bitejiuyeke\biteadminservice\user" />
+      <recent name="D:\code\frameworkjava\bite-admin\bite-admin-service\src\main\java\com\bitejiuyeke\biteadminservice\map" />
       <recent name="D:\code\frameworkjava\bite-gateway\src\main\resources" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -257,12 +262,12 @@
     <list>
       <item itemvalue="JUnit.JsonUtilTests.string2ComplexList" />
       <item itemvalue="JUnit.JsonUtilTests.string2ObjTest" />
+      <item itemvalue="应用程序.BiteAdminServiceApplication" />
       <item itemvalue="应用程序.BiteFileServiceApplication" />
       <item itemvalue="应用程序.BiteMstemplateServiceApplication" />
       <item itemvalue="应用程序.BiteGatewayApplication" />
       <item itemvalue="应用程序.BiteMstemplateServiceApplication (1)" />
       <item itemvalue="应用程序.OSSFileServiceImpl" />
-      <item itemvalue="应用程序.BiteAdminServiceApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -395,7 +400,21 @@
       <option name="project" value="LOCAL" />
       <updated>1759998990757</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="up">
+      <created>1760003302582</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1760003302582</updated>
+    </task>
+    <task id="LOCAL-00018" summary="up">
+      <created>1760003329253</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1760003329253</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
