@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c4cb5ca-78b9-493b-8fc9-4d440bacf283" name="变更" comment="" />
+    <list default="true" id="1c4cb5ca-78b9-493b-8fc9-4d440bacf283" name="变更" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,7 +52,6 @@
     <ConfirmationsSetting value="2" id="Remove" />
   </component>
   <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -67,9 +68,14 @@
     <property name="project.structure.last.edited" value="模块" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.bitejiuyeke.biteadminservice.config.mapper" />
+      <recent name="com.bitejiuyeke.biteadminapi.config.domain" />
+      <recent name="com.bitejiuyeke.biteadminservice.config.domain.dto" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\code\frameworkjava\bite-admin\bite-admin-api\src\main\java\com\bitejiuyeke\biteadminapi\map" />
       <recent name="D:\code\frameworkjava\bite-admin\bite-admin-api\src\main\java\com\bitejiuyeke\biteadminapi\config" />
@@ -94,7 +100,7 @@
       <recent name="com.bitejiuyeke.bitecommoncore.utils" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.BiteGatewayApplication">
+  <component name="RunManager" selected="应用程序.BiteAdminServiceApplication">
     <configuration name="BiteAdminServiceApplication" type="Application" factoryName="Application" nameIsGenerated="true">
       <envs>
         <env name="NACOS_ADDR" value="http://192.168.56.107:8848" />
@@ -421,7 +427,14 @@
       <option name="project" value="LOCAL" />
       <updated>1760095098719</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="up">
+      <created>1760155275915</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1760155275915</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

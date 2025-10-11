@@ -53,5 +53,6 @@
     <orderEntry type="library" name="Maven: com.fasterxml:classmate:1.7.0" level="project" />
     <orderEntry type="module" module-name="bite-common-domain" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.34" level="project" />
+    <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-annotation:3.5.7" level="project" />
   </component>
 </module>

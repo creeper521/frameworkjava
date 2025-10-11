@@ -10,7 +10,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @Slf4j
@@ -28,5 +30,35 @@ public class BiteMapController implements MapFeignClient {
         List<SysRegionDTO> regionDTOS = mapService.getCityList();
         List<RegionVO> result = BeanCopyUtil.copyListProperties(regionDTOS, RegionVO::new);
         return R.ok(result);
+    }
+
+    /**
+     * 获取城市列表
+     * @return
+     */
+    @Override
+    public R<Map<String, List<RegionVO>>> getCityPylist() {
+        Map<String, List<RegionVO>> result = new LinkedHashMap<>();
+        Map<String, List<SysRegionDTO>> pinyinList = mapService.getCityPylist();
+        for (Map.Entry<String, List<SysRegionDTO>> region : pinyinList.entrySet()) {
+            result.put(
+                    region.getKey(),
+                    BeanCopyUtil.copyListProperties(region.getValue(), RegionVO::new)
+            );
+        }
+        return R.ok(result);
+    }
+
+    @Override
+    public R<List<RegionVO>> regionChildren(Long parentId) {
+        List<SysRegionDTO> regionDTOS = mapService.getRegionChildren(parentId);
+        List<RegionVO> result = BeanCopyUtil.copyListProperties(regionDTOS, RegionVO::new);
+        return R.ok(result);
+    }
+
+    @Override
+    public R<List<RegionVO>> getHotCityList() {
+        List<SysRegionDTO> hotList = mapService.getHotCityList();
+        return R.ok(BeanCopyUtil.copyListProperties(hotList, RegionVO::new));
     }
 }
