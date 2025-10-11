@@ -1,6 +1,11 @@
 package com.bitejiuyeke.biteadminservice.map.service;
 
+import com.bitejiuyeke.biteadminapi.map.domain.dto.LocationReqDTO;
+import com.bitejiuyeke.biteadminapi.map.domain.dto.PlaceSearchReqDTO;
+import com.bitejiuyeke.biteadminservice.map.domain.dto.RegionCityDTO;
+import com.bitejiuyeke.biteadminservice.map.domain.dto.SearchPoiDTO;
 import com.bitejiuyeke.biteadminservice.map.domain.dto.SysRegionDTO;
+import com.bitejiuyeke.bitecommoncore.domain.dto.BasePageDTO;
 
 import java.util.List;
 import java.util.Map;
@@ -32,4 +37,20 @@ public interface IBiteMapService {
      * 获取热门城市
      */
     List<SysRegionDTO> getHotCityList();
+
+
+    /**
+     * 在地图上搜索
+     * @param placeSearchDTO
+     * @return
+     */
+    BasePageDTO<SearchPoiDTO> searchSuggestOnMap(PlaceSearchReqDTO
+                                                         placeSearchDTO);
+
+    /**
+     * 根据经纬度获取城市信息
+     * @param location
+     * @return
+     */
+    RegionCityDTO getCityByLocation(LocationReqDTO location);
 }

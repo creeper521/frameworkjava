@@ -1,12 +1,12 @@
-package com.bitejiuyeke.biteadminapi.map.domain.vo;
+package com.bitejiuyeke.biteadminservice.map.domain.dto;
 
 import lombok.Data;
 
 /**
- * 城市信息VO
+ * 城市信息DTO
  */
 @Data
-public class RegionCityVo {
+public class RegionCityDTO {
 
     /**
      * 城市ID

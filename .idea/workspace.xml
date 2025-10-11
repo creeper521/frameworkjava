@@ -72,9 +72,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.bitejiuyeke.biteadminapi.map.domain.vo" />
+      <recent name="com.bitejiuyeke.bitecommoncore.utils" />
+      <recent name="com.bitejiuyeke.bitecommondomain.domain.dto" />
+      <recent name="com.bitejiuyeke.biteadminservice.map.domain.dto" />
       <recent name="com.bitejiuyeke.biteadminservice.config.mapper" />
-      <recent name="com.bitejiuyeke.biteadminapi.config.domain" />
-      <recent name="com.bitejiuyeke.biteadminservice.config.domain.dto" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\code\frameworkjava\bite-admin\bite-admin-api\src\main\java\com\bitejiuyeke\biteadminapi\map" />
@@ -100,7 +102,7 @@
       <recent name="com.bitejiuyeke.bitecommoncore.utils" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.BiteAdminServiceApplication">
+  <component name="RunManager" selected="应用程序.BiteGatewayApplication">
     <configuration name="BiteAdminServiceApplication" type="Application" factoryName="Application" nameIsGenerated="true">
       <envs>
         <env name="NACOS_ADDR" value="http://192.168.56.107:8848" />
@@ -434,7 +436,14 @@
       <option name="project" value="LOCAL" />
       <updated>1760155275915</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="up">
+      <created>1760176617677</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1760176617677</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
