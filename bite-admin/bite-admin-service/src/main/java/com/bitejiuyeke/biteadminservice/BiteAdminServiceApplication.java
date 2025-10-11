@@ -17,12 +17,12 @@ public class BiteAdminServiceApplication {
         SpringApplication.run(BiteAdminServiceApplication.class, args);
         log.info("基础管理服务启动成功");
     }
-    /**
-     * 分页拦截器
-     * @return mapper分页查询
-     */
-    @Bean
-    public PaginationInnerInterceptor paginationInterceptor(){
-        return new PaginationInnerInterceptor();
-    }
+//    /**
+//     * 分页拦截器
+//     * @return mapper分页查询
+//     */
+//    @Bean
+//    public PaginationInnerInterceptor paginationInterceptor(){
+//        return new PaginationInnerInterceptor();
+//    }
 }
