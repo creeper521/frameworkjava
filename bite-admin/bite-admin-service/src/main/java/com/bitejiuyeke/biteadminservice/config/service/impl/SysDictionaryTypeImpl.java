@@ -17,8 +17,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class SysDictionaryTypeImpl implements ISysDictionaryService {
 
@@ -28,6 +27,11 @@ public class SysDictionaryTypeImpl implements ISysDictionaryService {
     @Autowired
     private SysDictionaryDataMapper sysDictionaryDataMapper;
 
+    /**
+     * 添加字典类型
+     * @param dictionaryTypeWriteReqDTO
+     * @return
+     */
     @Override
     public Long addType(DictionaryTypeWriteReqDTO dictionaryTypeWriteReqDTO) {
         //先查询是否存在该类型
@@ -55,6 +59,12 @@ public class SysDictionaryTypeImpl implements ISysDictionaryService {
 
     }
 
+
+    /**
+     *  查询字典类型
+     * @param dictionaryTypeListReqDTO
+     * @return
+     */
     @Override
     public BasePageVO<DictionaryTypeVO> listType(DictionaryTypeListReqDTO dictionaryTypeListReqDTO) {
         //初始化返回结果
@@ -91,6 +101,11 @@ public class SysDictionaryTypeImpl implements ISysDictionaryService {
         return result;
     }
 
+    /**
+     * 修改字典类型
+     * @param dictionaryTypeWriteReqDTO
+     * @return
+     */
     @Override
     public Long editType(DictionaryTypeWriteReqDTO dictionaryTypeWriteReqDTO) {
         SysDictionaryType sysDictionaryType = sysDictionaryTypeMapper.selectOne(
@@ -118,12 +133,74 @@ public class SysDictionaryTypeImpl implements ISysDictionaryService {
         return sysDictionaryType.getId();
     }
 
+    /**
+     * 根据字典类型查询字典数据
+     * @param dicTypeCode
+     * @return
+     */
     @Override
     public List<DictionaryDataDTO> selectDicDataByType(String dicTypeCode) {
         List<SysDictionaryData> list = sysDictionaryDataMapper.selectList(
                 new LambdaQueryWrapper<SysDictionaryData>()
                         .eq(SysDictionaryData::getTypeKey, dicTypeCode)
         );
+        List<DictionaryDataDTO> result = new ArrayList<>();
+        for (SysDictionaryData sysDictionaryData : list){
+            DictionaryDataDTO dictionaryDataDTO = new DictionaryDataDTO();
+            BeanUtils.copyProperties(sysDictionaryData, dictionaryDataDTO);
+            result.add(dictionaryDataDTO);
+        }
+        return result;
+    }
+
+    /**
+     * 根据字典类型查询字典数据
+     * @param dicTypeCodes
+     * @return
+     */
+    @Override
+    public Map<String, List<DictionaryDataDTO>> selectDicDataByTypes(List<String> dicTypeCodes) {
+        List<SysDictionaryData> list = sysDictionaryDataMapper.selectList(
+                new LambdaQueryWrapper<SysDictionaryData>()
+                        .in(SysDictionaryData::getTypeKey, dicTypeCodes)
+        );
+        List<DictionaryDataDTO> result = new ArrayList<>();
+        for (SysDictionaryData sysDictionaryData : list){
+            DictionaryDataDTO dictionaryDataDTO = new DictionaryDataDTO();
+            BeanUtils.copyProperties(sysDictionaryData, dictionaryDataDTO);
+            result.add(dictionaryDataDTO);
+        }
+        Map<String, List<DictionaryDataDTO>> map = new HashMap<>();
+        for (DictionaryDataDTO dictionaryDataDTO : result){
+            List<DictionaryDataDTO> value;
+            if(map.get(dictionaryDataDTO.getTypeKey()) == null){
+                value = new ArrayList<>();
+                value.add(dictionaryDataDTO);
+                map.put(dictionaryDataDTO.getTypeKey(), value);
+            }else{
+                value = map.get(dictionaryDataDTO.getTypeKey());
+                value.add(dictionaryDataDTO);
+            }
+        }
+        return map;
+    }
+
+    @Override
+    public DictionaryDataDTO selectDictDataByDataKey(String dataKey) {
+        // 1 根据字典数据业务主键查询字典数据表实体类对象
+        SysDictionaryData sysDictionaryData = sysDictionaryDataMapper.selectOne(new LambdaQueryWrapper<SysDictionaryData>().eq(SysDictionaryData::getDataKey, dataKey));
+        // 2 做对象转换
+        DictionaryDataDTO dictionaryDataDTO = new DictionaryDataDTO();
+        BeanUtils.copyProperties(sysDictionaryData, dictionaryDataDTO);
+        return dictionaryDataDTO;
+    }
+
+
+    @Override
+    public List<DictionaryDataDTO> getDicDataByDataKeys(List<String> dataKeys) {
+        if(dataKeys.isEmpty())return Collections.emptyList();
+        List<SysDictionaryData> list = sysDictionaryDataMapper.selectList(new LambdaQueryWrapper<SysDictionaryData>()
+                .in(SysDictionaryData::getDataKey, dataKeys));
         List<DictionaryDataDTO> result = new ArrayList<>();
         for (SysDictionaryData sysDictionaryData : list){
             DictionaryDataDTO dictionaryDataDTO = new DictionaryDataDTO();

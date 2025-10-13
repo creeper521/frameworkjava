@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class DictionaryController implements DictionaryFeignClient {
@@ -32,8 +33,6 @@ public class DictionaryController implements DictionaryFeignClient {
         return R.ok(iSysDictionaryService.listType(dictionaryTypeListReqDTO));
     }
 
-
-
     @PostMapping("/dictionary_type/edit")
     public R<Long> editType(@RequestBody @Validated DictionaryTypeWriteReqDTO dictionaryTypeWriteReqDTO) {
         return R.ok(iSysDictionaryService.editType(dictionaryTypeWriteReqDTO));
@@ -42,5 +41,20 @@ public class DictionaryController implements DictionaryFeignClient {
     @Override
     public List<DictionaryDataDTO> selectDicDataByType(String typeKey) {
         return iSysDictionaryService.selectDicDataByType(typeKey);
+    }
+
+    @Override
+    public Map<String, List<DictionaryDataDTO>> selectDicDataByTypes(List<String> typeKeys) {
+        return iSysDictionaryService.selectDicDataByTypes(typeKeys);
+    }
+
+    @Override
+    public DictionaryDataDTO getDicDataByKey(String dataKey) {
+        return iSysDictionaryService.selectDictDataByDataKey(dataKey);
+    }
+
+    @Override
+    public List<DictionaryDataDTO> getDictDataByDataKeys(List<String> dataKeys) {
+        return iSysDictionaryService.getDicDataByKeys(dataKeys);
     }
 }
