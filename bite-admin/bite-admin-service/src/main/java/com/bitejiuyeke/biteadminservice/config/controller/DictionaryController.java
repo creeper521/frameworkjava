@@ -1,15 +1,18 @@
 package com.bitejiuyeke.biteadminservice.config.controller;
 
+import com.bitejiuyeke.biteadminapi.config.domain.dto.DictionaryTypeListReqDTO;
 import com.bitejiuyeke.biteadminapi.config.domain.dto.DictionaryTypeWriteReqDTO;
+import com.bitejiuyeke.biteadminapi.config.domain.vo.DictionaryTypeVO;
 import com.bitejiuyeke.biteadminservice.config.service.ISysDictionaryService;
 import com.bitejiuyeke.bitecommondomain.domain.R;
+import com.bitejiuyeke.bitecommondomain.domain.vo.BasePageVO;
 import jakarta.annotation.Resource;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class DictionaryController {
 
     @Resource
@@ -17,7 +20,19 @@ public class DictionaryController {
 
     @PostMapping("/dictionary_type/add")
     public R<Long> addType(@RequestBody @Validated DictionaryTypeWriteReqDTO dictionaryTypeWriteReqDTO) {
-
         return R.ok(iSysDictionaryService.addType(dictionaryTypeWriteReqDTO));
     }
+
+    @PostMapping("/dictionary_data/list")
+    public R<BasePageVO<DictionaryTypeVO>> listType(@RequestBody @Validated DictionaryTypeListReqDTO dictionaryTypeListReqDTO) {
+        return R.ok(iSysDictionaryService.listType(dictionaryTypeListReqDTO));
+    }
+
+
+
+    @PostMapping("/dictionary_type/edit")
+    public R<Long> editType(@RequestBody @Validated DictionaryTypeWriteReqDTO dictionaryTypeWriteReqDTO) {
+        return R.ok(iSysDictionaryService.editType(dictionaryTypeWriteReqDTO));
+    }
+
 }

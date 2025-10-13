@@ -16,8 +16,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -64,7 +64,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="17" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/bite-admin/bite-admin-api/src/main/java/com/bitejiuyeke/biteadminapi/map" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/bite-admin/bite-admin-service/src/test/java/user" />
     <property name="project.structure.last.edited" value="模块" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -79,11 +79,11 @@
       <recent name="com.bitejiuyeke.biteadminservice.config.mapper" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\code\frameworkjava\bite-admin\bite-admin-service\src\test\java\user" />
       <recent name="D:\code\frameworkjava\bite-admin\bite-admin-api\src\main\java\com\bitejiuyeke\biteadminapi\map" />
       <recent name="D:\code\frameworkjava\bite-admin\bite-admin-api\src\main\java\com\bitejiuyeke\biteadminapi\config" />
       <recent name="D:\code\frameworkjava\bite-admin\bite-admin-service\src\main\java\com\bitejiuyeke\biteadminservice\user" />
       <recent name="D:\code\frameworkjava\bite-admin\bite-admin-service\src\main\java\com\bitejiuyeke\biteadminservice\map" />
-      <recent name="D:\code\frameworkjava\bite-gateway\src\main\resources" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -450,7 +450,21 @@
       <option name="project" value="LOCAL" />
       <updated>1760180390708</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="up">
+      <created>1760323192665</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1760323192665</updated>
+    </task>
+    <task id="LOCAL-00024" summary="up">
+      <created>1760323206724</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1760323206724</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
