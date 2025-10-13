@@ -60,6 +60,7 @@ public class BiteMapServiceImpl implements IBiteMapService {
     private IMapProvider mapProvider;
 
 
+
     /**
      * 缓存预热方案
      * @return 缓存列表数据

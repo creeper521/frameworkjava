@@ -22,8 +22,9 @@ import org.springframework.web.client.RestTemplate;
 /**
  * 地图服务实现类
  */
+
 @RefreshScope
-@Service
+@Component
 @Data
 @Slf4j
 @ConditionalOnProperty(value = "map.type", havingValue = "qqmap")
