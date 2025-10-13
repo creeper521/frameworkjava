@@ -1,9 +1,12 @@
 package com.bitejiuyeke.biteadminservice.config.service;
 
+import com.bitejiuyeke.biteadminapi.config.domain.dto.DictionaryDataDTO;
 import com.bitejiuyeke.biteadminapi.config.domain.dto.DictionaryTypeListReqDTO;
 import com.bitejiuyeke.biteadminapi.config.domain.dto.DictionaryTypeWriteReqDTO;
 import com.bitejiuyeke.biteadminapi.config.domain.vo.DictionaryTypeVO;
 import com.bitejiuyeke.bitecommondomain.domain.vo.BasePageVO;
+
+import java.util.List;
 
 public interface ISysDictionaryService {
     Long addType(DictionaryTypeWriteReqDTO dictionaryTypeWriteReqDTO);
@@ -12,4 +15,6 @@ public interface ISysDictionaryService {
                                                   dictionaryTypeListReqDTO);
 
     Long editType(DictionaryTypeWriteReqDTO dictionaryTypeWriteReqDTO);
+
+    List<DictionaryDataDTO> selectDicDataByType(String dicTypeCode);
 }

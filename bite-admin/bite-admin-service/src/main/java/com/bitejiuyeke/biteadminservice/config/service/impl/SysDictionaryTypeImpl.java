@@ -2,10 +2,13 @@ package com.bitejiuyeke.biteadminservice.config.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.bitejiuyeke.biteadminapi.config.domain.dto.DictionaryDataDTO;
 import com.bitejiuyeke.biteadminapi.config.domain.dto.DictionaryTypeListReqDTO;
 import com.bitejiuyeke.biteadminapi.config.domain.dto.DictionaryTypeWriteReqDTO;
 import com.bitejiuyeke.biteadminapi.config.domain.vo.DictionaryTypeVO;
+import com.bitejiuyeke.biteadminservice.config.domain.entity.SysDictionaryData;
 import com.bitejiuyeke.biteadminservice.config.domain.entity.SysDictionaryType;
+import com.bitejiuyeke.biteadminservice.config.mapper.SysDictionaryDataMapper;
 import com.bitejiuyeke.biteadminservice.config.mapper.SysDictionaryTypeMapper;
 import com.bitejiuyeke.biteadminservice.config.service.ISysDictionaryService;
 import com.bitejiuyeke.bitecommondomain.domain.vo.BasePageVO;
@@ -21,6 +24,9 @@ public class SysDictionaryTypeImpl implements ISysDictionaryService {
 
     @Autowired
     private SysDictionaryTypeMapper sysDictionaryTypeMapper;
+
+    @Autowired
+    private SysDictionaryDataMapper sysDictionaryDataMapper;
 
     @Override
     public Long addType(DictionaryTypeWriteReqDTO dictionaryTypeWriteReqDTO) {
@@ -110,5 +116,20 @@ public class SysDictionaryTypeImpl implements ISysDictionaryService {
         sysDictionaryTypeMapper.updateById(sysDictionaryType);
 
         return sysDictionaryType.getId();
+    }
+
+    @Override
+    public List<DictionaryDataDTO> selectDicDataByType(String dicTypeCode) {
+        List<SysDictionaryData> list = sysDictionaryDataMapper.selectList(
+                new LambdaQueryWrapper<SysDictionaryData>()
+                        .eq(SysDictionaryData::getTypeKey, dicTypeCode)
+        );
+        List<DictionaryDataDTO> result = new ArrayList<>();
+        for (SysDictionaryData sysDictionaryData : list){
+            DictionaryDataDTO dictionaryDataDTO = new DictionaryDataDTO();
+            BeanUtils.copyProperties(sysDictionaryData, dictionaryDataDTO);
+            result.add(dictionaryDataDTO);
+        }
+        return result;
     }
 }

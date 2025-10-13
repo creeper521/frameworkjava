@@ -1,8 +1,10 @@
 package com.bitejiuyeke.biteadminservice.config.controller;
 
+import com.bitejiuyeke.biteadminapi.config.domain.dto.DictionaryDataDTO;
 import com.bitejiuyeke.biteadminapi.config.domain.dto.DictionaryTypeListReqDTO;
 import com.bitejiuyeke.biteadminapi.config.domain.dto.DictionaryTypeWriteReqDTO;
 import com.bitejiuyeke.biteadminapi.config.domain.vo.DictionaryTypeVO;
+import com.bitejiuyeke.biteadminapi.config.feign.DictionaryFeignClient;
 import com.bitejiuyeke.biteadminservice.config.service.ISysDictionaryService;
 import com.bitejiuyeke.bitecommondomain.domain.R;
 import com.bitejiuyeke.bitecommondomain.domain.vo.BasePageVO;
@@ -12,8 +14,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
-public class DictionaryController {
+public class DictionaryController implements DictionaryFeignClient {
 
     @Resource
     private ISysDictionaryService iSysDictionaryService;
@@ -35,4 +39,8 @@ public class DictionaryController {
         return R.ok(iSysDictionaryService.editType(dictionaryTypeWriteReqDTO));
     }
 
+    @Override
+    public List<DictionaryDataDTO> selectDicDataByType(String typeKey) {
+        return iSysDictionaryService.selectDicDataByType(typeKey);
+    }
 }
