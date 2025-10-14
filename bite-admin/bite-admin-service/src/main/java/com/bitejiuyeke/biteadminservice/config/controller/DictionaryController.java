@@ -55,6 +55,6 @@ public class DictionaryController implements DictionaryFeignClient {
 
     @Override
     public List<DictionaryDataDTO> getDictDataByDataKeys(List<String> dataKeys) {
-        return iSysDictionaryService.getDicDataByKeys(dataKeys);
+        return iSysDictionaryService.getDicDataByDataKeys(dataKeys);
     }
 }
