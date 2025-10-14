@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.bitejiuyeke.biteadminapi.config.domain.dto.ArgumentAddReqDTO;
 import com.bitejiuyeke.biteadminapi.config.domain.dto.ArgumentDTO;
+import com.bitejiuyeke.biteadminapi.config.domain.dto.ArgumentEditReqDTO;
 import com.bitejiuyeke.biteadminapi.config.domain.dto.ArgumentListReqDTO;
 import com.bitejiuyeke.biteadminapi.config.domain.vo.ArgumentVO;
 import com.bitejiuyeke.biteadminservice.config.domain.entity.SysArgument;
@@ -19,30 +20,14 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 参数服务实现类
+ */
 @Service
 public class SysArgumentServiceImpl implements ISysArgumentService {
 
     @Resource
     private SysArgumentMapper sysArgumentMapper;
-
-    /**
-     * 根据参数键查询参数对象
-     * @param configKey 参数键
-     * @return
-     */
-    @Override
-    public ArgumentDTO getByConfigKey(String configKey) {
-        //根据参数业务主键查询参数对象
-        SysArgument sysArgument = sysArgumentMapper.selectOne(new LambdaQueryWrapper<SysArgument>()
-                .eq(SysArgument::getConfigKey, configKey));
-        // 2 做对象转换
-        if (sysArgument != null) {
-            ArgumentDTO argumentDTO = new ArgumentDTO();
-            BeanUtils.copyProperties(sysArgument, argumentDTO);
-            return argumentDTO;
-        }
-        return null;
-    }
 
     /**
      * 新增参数
@@ -105,5 +90,69 @@ public class SysArgumentServiceImpl implements ISysArgumentService {
         }
         result.setList(list);
         return result;
+    }
+
+    @Override
+    public Long edit(ArgumentEditReqDTO argumentEditReqDTO) {
+        //先查询表中存在
+        SysArgument sysArgument = sysArgumentMapper.selectOne(new LambdaQueryWrapper<SysArgument>()
+                .eq(SysArgument::getConfigKey, argumentEditReqDTO.getConfigKey())
+        );
+        if(sysArgument == null){
+            throw new ServiceException("参数不存在");
+        }
+        //参数唯一性校验
+        if(sysArgumentMapper.selectOne(
+                new LambdaQueryWrapper<SysArgument>()
+                        .ne(SysArgument::getConfigKey, argumentEditReqDTO.getConfigKey())
+                        .eq(SysArgument::getName, argumentEditReqDTO.getName())
+        ) != null){
+            throw new ServiceException("参数名称存在冲突");
+        }
+        //进行修改
+        sysArgument.setName(argumentEditReqDTO.getName());
+        sysArgument.setValue(argumentEditReqDTO.getValue());
+        sysArgument.setRemark(argumentEditReqDTO.getRemark());
+        if(StringUtils.isNotBlank(sysArgument.getRemark())){
+            sysArgument.setRemark(argumentEditReqDTO.getRemark());
+        }
+        sysArgumentMapper.updateById(sysArgument);
+        return sysArgument.getId();
+    }
+
+    /**
+     * 根据参数键查询参数对象
+     * @param configKey 参数键
+     * @return
+     */
+    @Override
+    public ArgumentDTO getByConfigKey(String configKey) {
+        //根据参数业务主键查询参数对象
+        SysArgument sysArgument = sysArgumentMapper.selectOne(new LambdaQueryWrapper<SysArgument>()
+                .eq(SysArgument::getConfigKey, configKey));
+        // 2 做对象转换
+        if (sysArgument != null) {
+            ArgumentDTO argumentDTO = new ArgumentDTO();
+            BeanUtils.copyProperties(sysArgument, argumentDTO);
+            return argumentDTO;
+        }
+        return null;
+    }
+
+    @Override
+    public List<ArgumentDTO> getByConfigKeys(List<String> configKeys) {
+        if(configKeys.isEmpty()){
+            return null;
+        }
+        LambdaQueryWrapper<SysArgument> wrapper = new LambdaQueryWrapper<>();
+        wrapper.in(SysArgument::getConfigKey, configKeys);
+        List<SysArgument> result = sysArgumentMapper.selectList(wrapper);
+        List<ArgumentDTO> list = new ArrayList<>();
+        for (SysArgument sysArgument : result) {
+            ArgumentDTO argumentDTO = new ArgumentDTO();
+            BeanUtils.copyProperties(sysArgument, argumentDTO);
+            list.add(argumentDTO);
+        }
+        return list;
     }
 }
