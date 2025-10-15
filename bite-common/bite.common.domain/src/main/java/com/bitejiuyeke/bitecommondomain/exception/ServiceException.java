@@ -43,7 +43,7 @@ public class ServiceException extends RuntimeException{
      * @param code
      * @param message
      */
-    public ServiceException(int code, String message){
+    public ServiceException(String message, int code){
         this.code = code;
         this.message = message;
     }
