@@ -1,5 +1,8 @@
 package com.bitejiuyeke.bitecommondomain.constants;
 
+/**
+ * token常量信息
+ */
 public class TokenConstants {
     /**
      * 密钥
