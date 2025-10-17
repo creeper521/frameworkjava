@@ -19,6 +19,9 @@
       <module fileurl="file://$PROJECT_DIR$/bite-mstemplate/bite-mstemplate.iml" filepath="$PROJECT_DIR$/bite-mstemplate/bite-mstemplate.iml" />
       <module fileurl="file://$PROJECT_DIR$/bite-mstemplate/bite-mstemplate-api/bite-mstemplate-api.iml" filepath="$PROJECT_DIR$/bite-mstemplate/bite-mstemplate-api/bite-mstemplate-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/bite-mstemplate/bite-mstemplate-service/bite-mstemplate-service.iml" filepath="$PROJECT_DIR$/bite-mstemplate/bite-mstemplate-service/bite-mstemplate-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bite-portal/bite-portal.iml" filepath="$PROJECT_DIR$/bite-portal/bite-portal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bite-portal/bite-portal-api/bite-portal-api.iml" filepath="$PROJECT_DIR$/bite-portal/bite-portal-api/bite-portal-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bite-portal/bite-portal-service/bite-portal-service.iml" filepath="$PROJECT_DIR$/bite-portal/bite-portal-service/bite-portal-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/frameworkjava.iml" filepath="$PROJECT_DIR$/frameworkjava.iml" />
     </modules>
   </component>
