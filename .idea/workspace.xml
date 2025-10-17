@@ -73,11 +73,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.bitejiuyeke.biteadminservice.user.domain.dto" />
       <recent name="com.bitejiuyeke.biteadminservice.user.domain.vo" />
       <recent name="com.bitejiuyeke.biteadminservice.user.mapper" />
       <recent name="com.bitejiuyeke.biteadminservice.user.service" />
       <recent name="com.bitejiuyeke.biteadminservice.map.domain.dto" />
-      <recent name="com.bitejiuyeke.biteadminapi.map.domain.vo" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\code\frameworkjava\bite-admin\bite-admin-service\src\test\java\user" />
@@ -535,7 +535,14 @@
       <option name="project" value="LOCAL" />
       <updated>1760669957594</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="up">
+      <created>1760671776467</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1760671776467</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

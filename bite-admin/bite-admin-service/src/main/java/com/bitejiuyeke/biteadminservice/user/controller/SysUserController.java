@@ -3,6 +3,8 @@ package com.bitejiuyeke.biteadminservice.user.controller;
 import com.bitejiuyeke.biteadminservice.user.domain.dto.PasswordLoginDTO;
 import com.bitejiuyeke.biteadminservice.user.domain.dto.SysUserDTO;
 import com.bitejiuyeke.biteadminservice.user.domain.dto.SysUserListReqDTO;
+import com.bitejiuyeke.biteadminservice.user.domain.dto.SysUserLoginDTO;
+import com.bitejiuyeke.biteadminservice.user.domain.vo.SysUserLoginVO;
 import com.bitejiuyeke.biteadminservice.user.domain.vo.SysUserVo;
 import com.bitejiuyeke.biteadminservice.user.service.ISysUserService;
 import com.bitejiuyeke.bitecommondomain.domain.R;
@@ -10,10 +12,7 @@ import com.bitejiuyeke.bitecommondomain.domain.vo.TokenVO;
 import com.bitejiuyeke.bitecommonsecurity.domain.dto.TokenDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -59,4 +58,10 @@ public class SysUserController{
                 .map(SysUserDTO::convertToVO)
                 .collect(Collectors.toList()));
     }
+
+    @GetMapping("/login_info/get")
+    public R<SysUserLoginVO> getLoginUser(){
+        return R.ok(sysUserService.getLoginUser().convertToVO());
+    }
+
 }

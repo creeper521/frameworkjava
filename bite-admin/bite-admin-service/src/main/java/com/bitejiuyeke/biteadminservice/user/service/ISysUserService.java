@@ -3,6 +3,7 @@ package com.bitejiuyeke.biteadminservice.user.service;
 import com.bitejiuyeke.biteadminservice.user.domain.dto.PasswordLoginDTO;
 import com.bitejiuyeke.biteadminservice.user.domain.dto.SysUserDTO;
 import com.bitejiuyeke.biteadminservice.user.domain.dto.SysUserListReqDTO;
+import com.bitejiuyeke.biteadminservice.user.domain.dto.SysUserLoginDTO;
 import com.bitejiuyeke.bitecommonsecurity.domain.dto.TokenDTO;
 
 import java.util.List;
@@ -29,4 +30,12 @@ public interface ISysUserService {
      * @return
      */
     List<SysUserDTO> getUserList(SysUserListReqDTO sysUserListReqDTO);
+
+    /**
+     * 获取管理员登录信息
+     *
+     * @return
+     */
+    SysUserLoginDTO getLoginUser();
+
 }

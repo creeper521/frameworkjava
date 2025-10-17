@@ -5,6 +5,7 @@ import com.bitejiuyeke.biteadminservice.config.service.ISysDictionaryService;
 import com.bitejiuyeke.biteadminservice.user.domain.dto.PasswordLoginDTO;
 import com.bitejiuyeke.biteadminservice.user.domain.dto.SysUserDTO;
 import com.bitejiuyeke.biteadminservice.user.domain.dto.SysUserListReqDTO;
+import com.bitejiuyeke.biteadminservice.user.domain.dto.SysUserLoginDTO;
 import com.bitejiuyeke.biteadminservice.user.domain.entity.SysUser;
 import com.bitejiuyeke.biteadminservice.user.mapper.SysUserMapper;
 import com.bitejiuyeke.biteadminservice.user.service.ISysUserService;
@@ -171,5 +172,29 @@ public class ISysUserServiceImpl implements ISysUserService {
                     return sysUserDTO;
                         }
                 ).collect(Collectors.toList());
+    }
+
+    @Override
+    public SysUserLoginDTO getLoginUser() {
+        LoginUserDTO loginUserDTO = tokenService.getLoginUser();
+        if(null == loginUserDTO || null == loginUserDTO.getUserId()){
+            throw new ServiceException("用户token有误", ResultCode.INVALID_PARA.getCode());
+        }
+
+        //获取用户信息
+        SysUser sysUser = sysUserMapper.selectById(loginUserDTO.getUserId());
+        if(null == sysUser){
+            throw new ServiceException("获取用户信息失败");
+        }
+        SysUserLoginDTO sysUserLoginDTO = new SysUserLoginDTO();
+        sysUserLoginDTO.setNickName(sysUser.getNickName());
+        sysUserLoginDTO.setIdentity(sysUser.getIdentity());
+        sysUserLoginDTO.setStatus(sysUser.getStatus());
+        sysUserLoginDTO.setToken(loginUserDTO.getToken());
+        sysUserLoginDTO.setUserId(loginUserDTO.getUserId());
+        sysUserLoginDTO.setUserName(loginUserDTO.getUserName());
+        sysUserLoginDTO.setLoginTime(loginUserDTO.getLoginTime());
+        sysUserLoginDTO.setExpireTime(loginUserDTO.getExpireTime());
+        return sysUserLoginDTO;
     }
 }
