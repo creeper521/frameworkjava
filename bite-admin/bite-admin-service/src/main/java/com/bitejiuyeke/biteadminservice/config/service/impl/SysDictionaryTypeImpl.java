@@ -195,6 +195,15 @@ public class SysDictionaryTypeImpl implements ISysDictionaryService {
         return dictionaryDataDTO;
     }
 
+    @Override
+    public DictionaryDataDTO getDicDataByKey(String dataKey) {
+        // 1 根据字典数据业务主键查询字典数据表实体类对象
+        SysDictionaryData sysDictionaryData = sysDictionaryDataMapper.selectOne(new LambdaQueryWrapper<SysDictionaryData>().eq(SysDictionaryData::getDataKey, dataKey));
+        // 2 做对象转换
+        DictionaryDataDTO dictionaryDataDTO = new DictionaryDataDTO();
+        BeanUtils.copyProperties(sysDictionaryData, dictionaryDataDTO);
+        return dictionaryDataDTO;
+    }
 
     @Override
     public List<DictionaryDataDTO> getDicDataByDataKeys(List<String> dataKeys) {

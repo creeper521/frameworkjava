@@ -182,5 +182,4 @@ public class TokenService {
     private String getTokenKey(String token) {
         return ACCESS_TOKEN + token;
     }
-
 }

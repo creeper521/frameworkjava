@@ -25,4 +25,10 @@ public interface ISysDictionaryService {
 
     List<DictionaryDataDTO> getDicDataByDataKeys(List<String> dataKeys);
 
+    /**
+     * 根据字典数据业务主键获取字典数据对象
+     * @param dataKey 字典数据业务主键
+     * @return DictionaryDataDTO
+     */
+    DictionaryDataDTO getDicDataByKey(String dataKey);
 }

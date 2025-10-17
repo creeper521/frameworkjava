@@ -3,6 +3,9 @@ package com.bitejiuyeke.bitecommondomain.domain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+/**
+ * 响应码枚举
+ */
 @AllArgsConstructor
 @Getter
 public enum ResultCode {

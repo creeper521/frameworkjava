@@ -67,6 +67,18 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.bitejiuyeke</groupId>
+            <artifactId>bite-common-redis</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.bitejiuyeke</groupId>
+            <artifactId>bite-common-security</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>

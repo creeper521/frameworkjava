@@ -1,8 +1,9 @@
 package com.bitejiuyeke.biteadminservice.user.service.impl;
 
 import cn.hutool.crypto.digest.DigestUtil;
-import com.alibaba.nacos.api.model.v2.ErrorCode;
+import com.bitejiuyeke.biteadminservice.config.service.ISysDictionaryService;
 import com.bitejiuyeke.biteadminservice.user.domain.dto.PasswordLoginDTO;
+import com.bitejiuyeke.biteadminservice.user.domain.dto.SysUserDTO;
 import com.bitejiuyeke.biteadminservice.user.domain.entity.SysUser;
 import com.bitejiuyeke.biteadminservice.user.mapper.SysUserMapper;
 import com.bitejiuyeke.biteadminservice.user.service.ISysUserService;
@@ -29,7 +30,17 @@ public class ISysUserServiceImpl implements ISysUserService {
     @Autowired
     private SysUserMapper sysUserMapper;
 
+    /**
+     * 字典服务
+     */
+    @Autowired
+    private ISysDictionaryService sysDictionaryService;
 
+    /**
+     * 登录
+     * @param passwordLoginDTO
+     * @return
+     */
     @Override
     public TokenDTO login(PasswordLoginDTO passwordLoginDTO) {
         LoginUserDTO loginUserDTO = new LoginUserDTO();
@@ -61,15 +72,70 @@ public class ISysUserServiceImpl implements ISysUserService {
             throw new ServiceException("账号密码错误，请确认后重新登录",
                     ResultCode.INVALID_PARA.getCode());
         }
-// 3、校验⽤⼾状态
+        // 3、校验用户状态
         if ("disable".equalsIgnoreCase(sysUser.getStatus())) {
             throw new ServiceException(ResultCode.USER_DISABLE);
         }
-// 4、设置登录信息
+        // 4、设置登录信息
         loginUserDTO.setUserId(sysUser.getId());
         loginUserDTO.setUserName(sysUser.getNickName());
         loginUserDTO.setUserFrom("sys");
-// 该⽅法会设置⽤⼾token、⽣命周期，并返回 Token
+        // 该⽅法会设置⽤⼾token、⽣命周期，并返回 Token
         return tokenService.createToken(loginUserDTO);
+    }
+
+    /**
+     * 新增与编辑接口的实现方法
+     * @param sysUserDTO B端用户信息DTO
+     * @return 用户ID
+     */
+    @Override
+    public Long addOrEditUser(SysUserDTO sysUserDTO) {
+        // 1 创建一个空的SysUser对象
+        SysUser sysUser = new SysUser();
+
+        // 2 先处理新增的逻辑
+        if (sysUserDTO.getUserId() == null) {
+            // 3 先校验手机号
+            if (!VerifyUtil.checkPhone(sysUserDTO.getPhoneNumber())) {
+                throw new ServiceException("手机格式错误", ResultCode.INVALID_PARA.getCode());
+            }
+            // 4 校验密码
+            if (StringUtils.isEmpty(sysUserDTO.getPassword()) || !sysUserDTO.checkPassword()) {
+                throw new ServiceException("密码校验失败", ResultCode.INVALID_PARA.getCode());
+            }
+            // 5 手机号唯一性判断
+            SysUser existSysUser = sysUserMapper.selectByPhoneNumber(AESUtil.encryptHex(sysUserDTO.getPhoneNumber()));
+            if (existSysUser != null) {
+                throw new ServiceException("手机号已经被占用", ResultCode.INVALID_PARA.getCode());
+            }
+            // 6 判断身份信息
+            if (StringUtils.isEmpty(sysUserDTO.getIdentity()) || sysDictionaryService.getDicDataByKey(sysUserDTO.getIdentity()) == null) {
+                throw new ServiceException("用户身份错误", ResultCode.INVALID_PARA.getCode());
+            }
+            // 7 判断完成后，执行新增用户逻辑
+            sysUser.setPhoneNumber(
+                    AESUtil.encryptHex(sysUserDTO.getPhoneNumber())
+            );
+            sysUser.setPassword(
+                    DigestUtil.sha256Hex(sysUserDTO.getPassword())
+            );
+            sysUser.setIdentity(sysUserDTO.getIdentity());
+        }
+        sysUser.setId(sysUserDTO.getUserId());
+        sysUser.setNickName(sysUserDTO.getNickName());
+        // 8 判断用户状态
+        if (sysDictionaryService.getDicDataByKey(sysUserDTO.getStatus()) == null) {
+            throw new ServiceException("用户状态错误", ResultCode.INVALID_PARA.getCode());
+        }
+        sysUser.setStatus(sysUserDTO.getStatus());
+        sysUser.setRemark(sysUserDTO.getRemark());
+        sysUserMapper.insertOrUpdate(sysUser);
+
+        // 9 踢人
+        if (sysUserDTO.getUserId() != null && sysUserDTO.getStatus().equals("disable")) {
+            tokenService.delLoginUser(sysUserDTO.getUserId(), "sys");
+        }
+        return sysUser.getId();
     }
 }
