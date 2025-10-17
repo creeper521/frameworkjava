@@ -4,6 +4,7 @@ import cn.hutool.crypto.digest.DigestUtil;
 import com.bitejiuyeke.biteadminservice.config.service.ISysDictionaryService;
 import com.bitejiuyeke.biteadminservice.user.domain.dto.PasswordLoginDTO;
 import com.bitejiuyeke.biteadminservice.user.domain.dto.SysUserDTO;
+import com.bitejiuyeke.biteadminservice.user.domain.dto.SysUserListReqDTO;
 import com.bitejiuyeke.biteadminservice.user.domain.entity.SysUser;
 import com.bitejiuyeke.biteadminservice.user.mapper.SysUserMapper;
 import com.bitejiuyeke.biteadminservice.user.service.ISysUserService;
@@ -16,6 +17,9 @@ import com.bitejiuyeke.bitecommonsecurity.domain.dto.TokenDTO;
 import com.bitejiuyeke.bitecommonsecurity.service.TokenService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ISysUserServiceImpl implements ISysUserService {
     /**
@@ -137,5 +141,35 @@ public class ISysUserServiceImpl implements ISysUserService {
             tokenService.delLoginUser(sysUserDTO.getUserId(), "sys");
         }
         return sysUser.getId();
+    }
+
+    /**
+     * 获取用户列表
+     * @param sysUserListReqDTO
+     * @return
+     */
+    @Override
+    public List<SysUserDTO> getUserList(SysUserListReqDTO sysUserListReqDTO) {
+        SysUser searchSysUser = new SysUser();
+        searchSysUser.setId(sysUserListReqDTO.getUserId());
+        searchSysUser.setStatus(sysUserListReqDTO.getStatus());
+        if(StringUtils.isNotEmpty(sysUserListReqDTO.getPhoneNumber())){
+            searchSysUser.setPhoneNumber(
+                    AESUtil.encryptHex(sysUserListReqDTO.getPhoneNumber())
+            );
+        }
+        List<SysUser> sysUserList = sysUserMapper.selectList(searchSysUser);
+        return sysUserList.stream()
+                .map(sysUser -> {
+                    SysUserDTO sysUserDTO = new SysUserDTO();
+                    sysUserDTO.setUserId(sysUser.getId());
+                    sysUserDTO.setPhoneNumber(AESUtil.decryptStr(sysUser.getPhoneNumber()));
+                    sysUserDTO.setNickName(sysUser.getNickName());
+                    sysUserDTO.setRemark(sysUser.getRemark());
+                    sysUserDTO.setStatus(sysUser.getStatus());
+                    sysUserDTO.setIdentity(sysUser.getIdentity());
+                    return sysUserDTO;
+                        }
+                ).collect(Collectors.toList());
     }
 }
