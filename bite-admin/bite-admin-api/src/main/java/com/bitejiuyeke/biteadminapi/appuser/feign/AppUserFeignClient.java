@@ -1,5 +1,6 @@
 package com.bitejiuyeke.biteadminapi.appuser.feign;
 
+import com.bitejiuyeke.biteadminapi.appuser.domain.dto.AppUserDTO;
 import com.bitejiuyeke.biteadminapi.appuser.domain.vo.AppUserVO;
 import com.bitejiuyeke.bitecommondomain.domain.R;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -24,4 +25,23 @@ public interface AppUserFeignClient {
      */
     @GetMapping("/register/openid")
     R<AppUserVO> registerByOpenId(@RequestParam String openId);
+
+    /**
+     * 根据手机号查询用户信息
+     * @param phoneNumber 手机号
+     * @return C端用户VO
+     */
+    @GetMapping("/phone_find")
+    R<AppUserVO> findByPhone(@RequestParam String phoneNumber);
+
+
+    /**
+     * 根据手机号注册用户
+     * @param phoneNumber 手机号
+     * @return C端用户VO
+     */
+    @GetMapping("/register/phone")
+    R<AppUserVO> registerByPhone(@RequestParam String phoneNumber);
+
+
 }

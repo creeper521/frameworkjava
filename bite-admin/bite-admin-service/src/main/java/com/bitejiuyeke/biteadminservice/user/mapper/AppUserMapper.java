@@ -12,4 +12,11 @@ public interface AppUserMapper extends BaseMapper<AppUser> {
      * @return AppUser
      */
     AppUser selectByOpenId(@Param("openId") String openId);
+
+    /**
+     * 根据手机号查询用户信息
+     * @param phoneNumber 手机号
+     * @return C端用户
+     */
+    AppUser selectByPhoneNumber(@Param("phoneNumber") String phoneNumber);
 }
