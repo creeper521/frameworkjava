@@ -1,11 +1,13 @@
 package com.bitejiuyeke.biteadminservice.user.service.impl;
 
 import com.bitejiuyeke.biteadminapi.appuser.domain.dto.AppUserDTO;
+import com.bitejiuyeke.biteadminapi.appuser.domain.dto.AppUserListReqDTO;
 import com.bitejiuyeke.biteadminapi.appuser.domain.dto.UserEditReqDTO;
 import com.bitejiuyeke.biteadminservice.user.config.RabbitConfig;
 import com.bitejiuyeke.biteadminservice.user.domain.entity.AppUser;
 import com.bitejiuyeke.biteadminservice.user.mapper.AppUserMapper;
 import com.bitejiuyeke.biteadminservice.user.service.IAppUserService;
+import com.bitejiuyeke.bitecommoncore.domain.dto.BasePageDTO;
 import com.bitejiuyeke.bitecommoncore.utils.AESUtil;
 import com.bitejiuyeke.bitecommondomain.domain.ResultCode;
 import com.bitejiuyeke.bitecommondomain.exception.ServiceException;
@@ -18,8 +20,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @Slf4j
@@ -166,4 +174,97 @@ public class AppUserServiceImpl implements IAppUserService {
             log.error("生产者发送修改用户消息异常", e);
         }
     }
+
+    /**
+     * 获取用户列表
+     * @param appUserListReqDTO
+     * @return
+     */
+    @Override
+    public BasePageDTO<AppUserDTO> getUserList(AppUserListReqDTO appUserListReqDTO) {
+        AppUserListReqDTO reqDTO = new AppUserListReqDTO();
+        BeanUtils.copyProperties(appUserListReqDTO, reqDTO);
+
+        reqDTO.setPhoneNumber(AESUtil.encryptHex(appUserListReqDTO.getPhoneNumber()));
+
+        BasePageDTO<AppUserDTO> result = new BasePageDTO<>();
+        Long total = appUserMapper.selectCount(reqDTO);
+        if(0 == total){
+            //无数据
+            result.setTotals(0);
+            result.setTotalPages(0);
+            log.info("查询⼈员列表为空，totals:{}, totalPages:{}, pageNo:{}, pageSize:{}",
+            result.getTotals(), result.getTotalPages(),
+                    reqDTO.getPageNo(), reqDTO.getPageSize());
+            result.setList(Arrays.asList());
+            return result;
+        }
+        List<AppUser> appUserList = appUserMapper.selectPage(reqDTO);
+        result.setTotals(Integer.parseInt(String.valueOf(total)));
+        result.setTotalPages(BasePageDTO.calculateTotalPages(total, reqDTO.getPageSize()));
+        if(CollectionUtils.isEmpty(appUserList)){
+            log.info("超出查询⼈员列表范围，totals:{}, totalPages:{}, pageNo:{}, pageSize:{}",
+            result.getTotals(), result.getTotalPages(),
+                    reqDTO.getPageNo(), reqDTO.getPageSize());
+            result.setList(Arrays.asList());
+            return result;
+        }
+        result.setList(
+                appUserList.stream().map(appUser -> {
+                    AppUserDTO appUserDTO = new AppUserDTO();
+                    appUserDTO.setUserId(appUser.getId());
+                    appUserDTO.setNickName(appUser.getNickName());
+                    appUserDTO.setPhoneNumber(AESUtil.decryptStr(appUser.getPhoneNumber()));
+                    appUserDTO.setAvatar(appUser.getAvatar());
+                    appUserDTO.setOpenId(appUser.getOpenId());
+                    return appUserDTO;
+                }).collect(Collectors.toList())
+        );
+        return result;
+    }
+
+    @Override
+    public AppUserDTO findById(Long userId) {
+        if(null == userId){
+            return null;
+        }
+
+        AppUser appUser = appUserMapper.selectById(userId);
+        if(null == appUser){
+            log.error("查询用户信息为空，userId:{}", userId);
+            return null;
+        }
+        AppUserDTO appUserDTO = new AppUserDTO();
+        appUserDTO.setUserId(appUser.getId());
+        appUserDTO.setNickName(appUser.getNickName());
+        appUserDTO.setPhoneNumber(AESUtil.decryptStr(appUser.getPhoneNumber()));
+        appUserDTO.setAvatar(appUser.getAvatar());
+        appUserDTO.setOpenId(appUser.getOpenId());
+        return appUserDTO;
+    }
+
+    /**
+     * 批量获取用户列表
+     * @param userIds
+     * @return
+     */
+    @Override
+    public List<AppUserDTO> getUserList(List<Long> userIds) {
+        if(CollectionUtils.isEmpty(userIds)){
+            return Arrays.asList();
+        }
+        List<AppUser> appUserList = appUserMapper.selectBatchIds(userIds);
+
+        return appUserList.stream()
+                .map(appUser -> {
+                    AppUserDTO appUserDTO = new AppUserDTO();
+                    BeanUtils.copyProperties(appUser, appUserDTO);
+                    appUserDTO.setPhoneNumber(AESUtil.decryptStr(appUser.getPhoneNumber()));
+                    appUserDTO.setOpenId(appUser.getOpenId());
+                    return appUserDTO;
+                }).collect(Collectors.toList());
+    }
+
+
+
 }

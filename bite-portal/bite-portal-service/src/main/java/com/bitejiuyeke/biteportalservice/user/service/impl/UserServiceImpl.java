@@ -11,12 +11,15 @@ import com.bitejiuyeke.bitecommonmessage.service.CaptchaService;
 import com.bitejiuyeke.bitecommonsecurity.domain.dto.LoginUserDTO;
 import com.bitejiuyeke.bitecommonsecurity.domain.dto.TokenDTO;
 import com.bitejiuyeke.bitecommonsecurity.service.TokenService;
+import com.bitejiuyeke.bitecommonsecurity.util.JwtUtil;
+import com.bitejiuyeke.bitecommonsecurity.util.SecurityUtil;
 import com.bitejiuyeke.biteportalservice.user.entity.dto.CodeLoginDTO;
 import com.bitejiuyeke.biteportalservice.user.entity.dto.LoginDTO;
 import com.bitejiuyeke.biteportalservice.user.entity.dto.UserDTO;
 import com.bitejiuyeke.biteportalservice.user.entity.dto.WechatLoginDTO;
 import com.bitejiuyeke.biteportalservice.user.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -161,11 +164,37 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public UserDTO getLoginUser() {
-        return null;
+        LoginUserDTO loginUserDTO = tokenService.getLoginUser();
+        if (null == loginUserDTO){
+            throw new ServiceException("用户Token有误", ResultCode.INVALID_PARA.getCode());
+        }
+        //获取用户信息
+        R<AppUserVO> result = appUserFeignClient.findById(loginUserDTO.getUserId());
+        if(null == result || result.getCode() != ResultCode.SUCCESS.getCode() || null == result.getData()){
+            throw new ServiceException("查询用户失败", ResultCode.INVALID_PARA.getCode());
+        }
+        AppUserVO appUserVO = result.getData();
+        UserDTO userDTO = new UserDTO();
+        userDTO.setUserId(appUserVO.getUserId());
+        userDTO.setUserName(appUserVO.getNickName());
+        userDTO.setAvatar(appUserVO.getAvatar());
+        userDTO.setToken(loginUserDTO.getToken());
+        userDTO.setLoginTime(loginUserDTO.getLoginTime());
+        userDTO.setExpireTime(loginUserDTO.getExpireTime());
+        return userDTO;
+
     }
 
     @Override
     public void logout() {
+        String token = SecurityUtil.getToken();
+        if(StringUtils.isEmpty( token)){
+            return ;
+        }
+        String username = tokenService.getLoginUser().getUserName();
+        String userId = JwtUtil.getUserId(token);
+        log.info("用户退出登录: {} {}", username, userId);
 
+        tokenService.delLoginUser(token);
     }
 }

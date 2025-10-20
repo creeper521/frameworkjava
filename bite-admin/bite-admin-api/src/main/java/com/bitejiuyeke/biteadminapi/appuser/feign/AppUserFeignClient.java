@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @FeignClient(contextId = "appUserFeignClient", value = "bite-admin", path = "/app_user")
 public interface AppUserFeignClient {
     /**
@@ -55,4 +57,20 @@ public interface AppUserFeignClient {
      */
     @PostMapping("/edit")
     R<Void> edit(@Validated @RequestBody UserEditReqDTO userEditReqDTO);
+
+    /**
+     * 获取用户列表
+     * @param userIds 用户ID列表
+     * @return C端用户VO列表
+     */
+    @PostMapping("/list")
+    R<List<AppUserVO>> list(@RequestBody List<Long> userIds);
+
+    /**
+     * 根据ID查询用户信息
+     * @param userId 用户ID
+     * @return C端用户VO
+     */
+    @GetMapping("/id_find")
+    R<AppUserVO> findById(@RequestParam Long userId);
 }

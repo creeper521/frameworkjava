@@ -6,6 +6,7 @@ import com.bitejiuyeke.bitecommondomain.domain.vo.TokenVO;
 import com.bitejiuyeke.bitecommonsecurity.domain.dto.TokenDTO;
 import com.bitejiuyeke.biteportalservice.user.entity.dto.CodeLoginDTO;
 import com.bitejiuyeke.biteportalservice.user.entity.dto.WechatLoginDTO;
+import com.bitejiuyeke.biteportalservice.user.entity.vo.UserVO;
 import com.bitejiuyeke.biteportalservice.user.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,25 @@ public class UserController {
     @PostMapping("/edit")
     public R<Void> edit(@RequestBody @Validated UserEditReqDTO userEditReqDTO) {
         userService.edit(userEditReqDTO);
+        return R.ok();
+    }
+
+    /**
+     * 获取登录用户信息
+     * @return C端用户信息VO
+     */
+    @GetMapping("/login_info/get")
+    public R<UserVO> getLoginInfo() {
+        return R.ok(userService.getLoginUser().convertToVO());
+    }
+
+    /**
+     * 登出
+     * @return void
+     */
+    @DeleteMapping("/logout")
+    public R<?> logout() {
+        userService.logout();
         return R.ok();
     }
 

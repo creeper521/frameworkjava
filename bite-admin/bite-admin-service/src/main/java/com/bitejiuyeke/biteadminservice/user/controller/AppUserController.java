@@ -4,21 +4,20 @@ import com.bitejiuyeke.biteadminapi.appuser.domain.dto.AppUserDTO;
 import com.bitejiuyeke.biteadminapi.appuser.domain.dto.UserEditReqDTO;
 import com.bitejiuyeke.biteadminapi.appuser.domain.vo.AppUserVO;
 import com.bitejiuyeke.biteadminapi.appuser.feign.AppUserFeignClient;
-import com.bitejiuyeke.biteadminservice.user.domain.entity.AppUser;
-import com.bitejiuyeke.biteadminservice.user.domain.entity.SysUser;
 import com.bitejiuyeke.biteadminservice.user.service.IAppUserService;
-import com.bitejiuyeke.bitecommoncore.utils.AESUtil;
 import com.bitejiuyeke.bitecommondomain.domain.R;
-import com.bitejiuyeke.bitecommondomain.domain.ResultCode;
 import com.bitejiuyeke.bitecommondomain.exception.ServiceException;
-import org.apache.commons.lang3.StringUtils;
-import org.bouncycastle.jcajce.provider.symmetric.AES;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 
 @RestController
 @RequestMapping("/app_user")
@@ -96,4 +95,21 @@ public class AppUserController implements AppUserFeignClient {
         appUserService.edit(userEditReqDTO);
         return R.ok();
     }
+
+    @Override
+    public R<AppUserVO> findById(Long userId) {
+        AppUserDTO appUserDTO = appUserService.findById(userId);
+        return appUserDTO == null ? R.ok() : R.ok(appUserDTO.convertToVO());
+    }
+
+    @Override
+    public R<List<AppUserVO>> list(@RequestBody List<Long> userIds) {
+        List<AppUserDTO> appUserDTOS = appUserService.getUserList(userIds);
+        return R.ok(appUserDTOS.stream()
+                        .filter(Objects::nonNull)
+                        .map(AppUserDTO::convertToVO)
+                        .collect(Collectors.toList())
+        );
+    }
+
 }
