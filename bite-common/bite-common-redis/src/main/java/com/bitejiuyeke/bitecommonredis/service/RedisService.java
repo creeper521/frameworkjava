@@ -5,13 +5,13 @@ import com.bitejiuyeke.bitecommoncore.utils.JsonUtil;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.stereotype.Component;
 
-import java.lang.ref.Reference;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -26,6 +26,7 @@ public class RedisService {
      * redisTemplate
      */
     @Autowired
+    @Qualifier("customRedisTemplate")
     public RedisTemplate redisTemplate;
 
 

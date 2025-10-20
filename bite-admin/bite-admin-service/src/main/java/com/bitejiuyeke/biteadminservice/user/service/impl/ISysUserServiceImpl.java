@@ -16,12 +16,18 @@ import com.bitejiuyeke.bitecommondomain.exception.ServiceException;
 import com.bitejiuyeke.bitecommonsecurity.domain.dto.LoginUserDTO;
 import com.bitejiuyeke.bitecommonsecurity.domain.dto.TokenDTO;
 import com.bitejiuyeke.bitecommonsecurity.service.TokenService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
+@Slf4j
+@RefreshScope
 public class ISysUserServiceImpl implements ISysUserService {
     /**
      * token服务

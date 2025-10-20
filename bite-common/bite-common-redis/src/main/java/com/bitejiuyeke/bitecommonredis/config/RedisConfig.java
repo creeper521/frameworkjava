@@ -37,8 +37,9 @@ public class RedisConfig {
     //修饰符  返回值类型 函数名  参数列表  函数体
     //key  value
     //key  value (hashKey  hashValue)
-    @Bean
-    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
+    @Bean("customRedisTemplate")
+//    @Bean
+    public RedisTemplate<String, Object> customRedisTemplate(RedisConnectionFactory redisConnectionFactory) {
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(redisConnectionFactory);
         //Redis 中key的序列化设置
