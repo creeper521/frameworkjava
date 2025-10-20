@@ -1,6 +1,7 @@
 package com.bitejiuyeke.biteadminservice.user.service;
 
 import com.bitejiuyeke.biteadminapi.appuser.domain.dto.AppUserDTO;
+import com.bitejiuyeke.biteadminapi.appuser.domain.dto.UserEditReqDTO;
 
 public interface IAppUserService {
     /**
@@ -31,4 +32,12 @@ public interface IAppUserService {
      * @return C端用户DTO
      */
     AppUserDTO registerByPhone(String phoneNumber);
+
+    /**
+     * 编辑用户
+     *
+     * @param userEditReqDTO ⽤⼾编辑DTO
+     * @return void类型
+     */
+    void edit(UserEditReqDTO userEditReqDTO);
 }

@@ -1,10 +1,14 @@
 package com.bitejiuyeke.biteadminapi.appuser.feign;
 
 import com.bitejiuyeke.biteadminapi.appuser.domain.dto.AppUserDTO;
+import com.bitejiuyeke.biteadminapi.appuser.domain.dto.UserEditReqDTO;
 import com.bitejiuyeke.biteadminapi.appuser.domain.vo.AppUserVO;
 import com.bitejiuyeke.bitecommondomain.domain.R;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(contextId = "appUserFeignClient", value = "bite-admin", path = "/app_user")
@@ -43,5 +47,12 @@ public interface AppUserFeignClient {
     @GetMapping("/register/phone")
     R<AppUserVO> registerByPhone(@RequestParam String phoneNumber);
 
-
+    /**
+     * 编辑⽤⼾
+     *
+     * @param userEditReqDTO ⽤⼾编辑DTO
+     * @return void类型
+     */
+    @PostMapping("/edit")
+    R<Void> edit(@Validated @RequestBody UserEditReqDTO userEditReqDTO);
 }

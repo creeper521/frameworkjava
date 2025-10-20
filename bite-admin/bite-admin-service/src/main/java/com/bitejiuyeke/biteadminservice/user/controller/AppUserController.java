@@ -1,6 +1,7 @@
 package com.bitejiuyeke.biteadminservice.user.controller;
 
 import com.bitejiuyeke.biteadminapi.appuser.domain.dto.AppUserDTO;
+import com.bitejiuyeke.biteadminapi.appuser.domain.dto.UserEditReqDTO;
 import com.bitejiuyeke.biteadminapi.appuser.domain.vo.AppUserVO;
 import com.bitejiuyeke.biteadminapi.appuser.feign.AppUserFeignClient;
 import com.bitejiuyeke.biteadminservice.user.domain.entity.AppUser;
@@ -83,5 +84,16 @@ public class AppUserController implements AppUserFeignClient {
             throw new ServiceException("注册失败");
         }
         return R.ok(appUserDTO.convertToVO());
+    }
+
+    /**
+     * 编辑用户
+     * @param userEditReqDTO
+     * @return
+     */
+    @Override
+    public R<Void> edit(UserEditReqDTO userEditReqDTO) {
+        appUserService.edit(userEditReqDTO);
+        return R.ok();
     }
 }

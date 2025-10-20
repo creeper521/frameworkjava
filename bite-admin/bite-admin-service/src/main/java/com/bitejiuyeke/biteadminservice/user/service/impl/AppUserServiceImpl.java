@@ -1,6 +1,8 @@
 package com.bitejiuyeke.biteadminservice.user.service.impl;
 
 import com.bitejiuyeke.biteadminapi.appuser.domain.dto.AppUserDTO;
+import com.bitejiuyeke.biteadminapi.appuser.domain.dto.UserEditReqDTO;
+import com.bitejiuyeke.biteadminservice.user.config.RabbitConfig;
 import com.bitejiuyeke.biteadminservice.user.domain.entity.AppUser;
 import com.bitejiuyeke.biteadminservice.user.mapper.AppUserMapper;
 import com.bitejiuyeke.biteadminservice.user.service.IAppUserService;
@@ -9,9 +11,12 @@ import com.bitejiuyeke.bitecommondomain.domain.ResultCode;
 import com.bitejiuyeke.bitecommondomain.exception.ServiceException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.amqp.AmqpException;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -32,6 +37,12 @@ public class AppUserServiceImpl implements IAppUserService {
      */
     @Value("${appuser.info.defaultAvatar}")
     private String defaultAvatar;
+
+    /**
+     * 消息队列
+     */
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
     /**
      *  微信注册
@@ -130,4 +141,29 @@ public class AppUserServiceImpl implements IAppUserService {
         return appUserDTO;
     }
 
+    /**
+     * 修改用户信息
+     * @param userEditReqDTO
+     */
+    @Override
+    public void edit(UserEditReqDTO userEditReqDTO) {
+        //初始化
+        AppUser appUser = new AppUser();
+        appUser.setId(userEditReqDTO.getUserId());
+        appUser.setNickName(userEditReqDTO.getNickName());
+        appUser.setAvatar(userEditReqDTO.getAvatar());
+        appUserMapper.updateById(appUser);
+
+        //发送消息通知消费方
+        AppUser appUser1 = appUserMapper.selectById(userEditReqDTO.getUserId());
+        AppUserDTO appUserDTO = new AppUserDTO();
+        BeanUtils.copyProperties(appUser1, appUserDTO);
+        appUserDTO.setUserId(appUser1.getId());
+        //通过 RabbitMQ 发送消息通知其他服务，告知用户信息已修改。
+        try {
+            rabbitTemplate.convertAndSend(RabbitConfig.EXCHANGE_NAME,"",appUserDTO);
+        } catch (Exception e) {
+            log.error("生产者发送修改用户消息异常", e);
+        }
+    }
 }

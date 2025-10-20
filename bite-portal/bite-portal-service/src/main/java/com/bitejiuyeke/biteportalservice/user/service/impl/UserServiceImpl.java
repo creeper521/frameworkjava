@@ -1,20 +1,22 @@
 package com.bitejiuyeke.biteportalservice.user.service.impl;
 
+import com.bitejiuyeke.biteadminapi.appuser.domain.dto.UserEditReqDTO;
 import com.bitejiuyeke.biteadminapi.appuser.domain.vo.AppUserVO;
 import com.bitejiuyeke.biteadminapi.appuser.feign.AppUserFeignClient;
 import com.bitejiuyeke.bitecommoncore.utils.VerifyUtil;
 import com.bitejiuyeke.bitecommondomain.domain.R;
 import com.bitejiuyeke.bitecommondomain.domain.ResultCode;
 import com.bitejiuyeke.bitecommondomain.exception.ServiceException;
+import com.bitejiuyeke.bitecommonmessage.service.CaptchaService;
 import com.bitejiuyeke.bitecommonsecurity.domain.dto.LoginUserDTO;
 import com.bitejiuyeke.bitecommonsecurity.domain.dto.TokenDTO;
 import com.bitejiuyeke.bitecommonsecurity.service.TokenService;
 import com.bitejiuyeke.biteportalservice.user.entity.dto.CodeLoginDTO;
 import com.bitejiuyeke.biteportalservice.user.entity.dto.LoginDTO;
+import com.bitejiuyeke.biteportalservice.user.entity.dto.UserDTO;
 import com.bitejiuyeke.biteportalservice.user.entity.dto.WechatLoginDTO;
 import com.bitejiuyeke.biteportalservice.user.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -138,5 +140,32 @@ public class UserServiceImpl implements IUserService {
             }
         }
         return result == null ? null : result.getData();
+    }
+
+    @Override
+    public String sendCode(String phone) {
+        return null;
+    }
+
+    /**
+     * 修改用户信息
+     * @param userEditReqDTO C端用户编辑DTO
+     */
+    @Override
+    public void edit(UserEditReqDTO userEditReqDTO) {
+        R<Void> result = appUserFeignClient.edit(userEditReqDTO);
+        if (result == null || result.getCode() != ResultCode.SUCCESS.getCode()) {
+            throw new ServiceException("修改用户失败");
+        }
+    }
+
+    @Override
+    public UserDTO getLoginUser() {
+        return null;
+    }
+
+    @Override
+    public void logout() {
+
     }
 }

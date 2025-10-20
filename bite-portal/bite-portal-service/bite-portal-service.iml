@@ -181,5 +181,6 @@
     <orderEntry type="library" name="Maven: org.redisson:redisson-spring-data-32:3.29.0" level="project" />
     <orderEntry type="module" module-name="bite-common-security" />
     <orderEntry type="module" module-name="bite-admin-api" />
+    <orderEntry type="module" module-name="bite-common-message" />
   </component>
 </module>

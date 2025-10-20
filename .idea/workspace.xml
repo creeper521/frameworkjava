@@ -73,11 +73,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.bitejiuyeke.biteportalservice.user.entity.vo" />
       <recent name="com.bitejiuyeke.biteportalservice.user.entity.dto" />
+      <recent name="com.bitejiuyeke.biteadminapi.appuser.domain.dto" />
       <recent name="com.bitejiuyeke.biteadminapi.appuser.domain.vo" />
       <recent name="com.bitejiuyeke.biteadminservice.user.domain.dto" />
-      <recent name="com.bitejiuyeke.biteadminservice.user.domain.vo" />
-      <recent name="com.bitejiuyeke.biteadminservice.user.mapper" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\code\frameworkjava\bite-admin\bite-admin-service\src\test\java\user" />
@@ -236,7 +236,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JsonUtilTests.string2ComplexList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="JsonUtilTests.string2ComplexList" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
       <module name="bite-common-core" />
       <extension name="coverage">
         <pattern>
@@ -549,7 +549,14 @@
       <option name="project" value="LOCAL" />
       <updated>1760694258535</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="up">
+      <created>1760844966829</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1760844966829</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -10,6 +10,7 @@
         <module name="bite-file-service" />
         <module name="bite-file-api" />
         <module name="bite-admin-api" />
+        <module name="bite-common-message" />
         <module name="bite-common-domain" />
         <module name="bite-common-redis" />
         <module name="bite-gateway" />
@@ -32,6 +33,7 @@
       <module name="bite-common-cache" target="17" />
       <module name="bite-common-core" target="17" />
       <module name="bite-common-domain" target="17" />
+      <module name="bite-common-message" target="17" />
       <module name="bite-common-rabbitmq" target="17" />
       <module name="bite-common-redis" target="17" />
       <module name="bite-common-security" target="17" />
@@ -55,6 +57,7 @@
       <module name="bite-common-cache" options="-parameters" />
       <module name="bite-common-core" options="-parameters" />
       <module name="bite-common-domain" options="-parameters" />
+      <module name="bite-common-message" options="-parameters" />
       <module name="bite-common-rabbitmq" options="-parameters" />
       <module name="bite-common-redis" options="-parameters" />
       <module name="bite-common-security" options="-parameters" />
