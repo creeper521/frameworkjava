@@ -11,9 +11,11 @@ import com.bitejiuyeke.bitecommondomain.exception.ServiceException;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -44,6 +46,7 @@ public class QQMapServiceImpl implements IMapProvider {
 
     @Autowired
     private RestTemplate restTemplate;
+
 
     /**
      * 根据关键词搜索地点

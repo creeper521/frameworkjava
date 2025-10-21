@@ -164,5 +164,6 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.17.2" level="project" />
     <orderEntry type="library" name="Maven: org.jodd:jodd-util:6.2.2" level="project" />
     <orderEntry type="library" name="Maven: org.redisson:redisson-spring-data-32:3.29.0" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.validation:jakarta.validation-api:3.0.2" level="project" />
   </component>
 </module>

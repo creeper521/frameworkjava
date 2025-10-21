@@ -11,6 +11,7 @@ import com.bitejiuyeke.bitecommonsecurity.util.JwtUtil;
 import com.bitejiuyeke.bitecommonsecurity.util.SecurityUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
@@ -47,6 +48,7 @@ public class TokenService {
     /**
      * redis操作服务
      */
+    @Autowired
     private RedisService redisService;
 
     /**

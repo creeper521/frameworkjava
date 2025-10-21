@@ -1,1 +1,2 @@
 com.bitejiuyeke.bitecommonsecurity.handler.GlobalExceptionHandler
+com.bitejiuyeke.bitecommonsecurity.service.TokenService
