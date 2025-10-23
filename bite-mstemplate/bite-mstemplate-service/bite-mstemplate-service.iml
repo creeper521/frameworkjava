@@ -111,21 +111,22 @@
     <orderEntry type="library" name="Maven: org.mybatis:mybatis-spring:3.0.4" level="project" />
     <orderEntry type="module" module-name="bite-common-domain" />
     <orderEntry type="module" module-name="bite-common-security" />
-    <orderEntry type="module" module-name="bite-common-core" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-context-support:6.1.12" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-loadbalancer:4.1.4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-loadbalancer:4.1.4" level="project" />
+    <orderEntry type="library" name="Maven: io.projectreactor:reactor-core:3.6.9" level="project" />
     <orderEntry type="library" name="Maven: io.projectreactor.addons:reactor-extra:3.5.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-cache:3.3.3" level="project" />
     <orderEntry type="library" name="Maven: com.stoyanr:evictor:1.0.0" level="project" />
+    <orderEntry type="module" module-name="bite-common-core" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context-support:6.1.12" level="project" />
     <orderEntry type="library" name="Maven: io.jsonwebtoken:jjwt:0.9.1" level="project" />
     <orderEntry type="library" name="Maven: cn.hutool:hutool-all:5.8.25" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-collections4:4.4" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.14.0" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.servlet:jakarta.servlet-api:6.0.0" level="project" />
     <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:2.3.1" level="project" />
     <orderEntry type="library" name="Maven: javax.activation:javax.activation-api:1.2.0" level="project" />
     <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-annotation:3.5.7" level="project" />
-    <orderEntry type="library" name="Maven: jakarta.servlet:jakarta.servlet-api:6.0.0" level="project" />
     <orderEntry type="library" name="Maven: jakarta.validation:jakarta.validation-api:3.0.2" level="project" />
     <orderEntry type="module" module-name="bite-common-redis" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-redis:3.3.3" level="project" />
@@ -134,7 +135,6 @@
     <orderEntry type="library" name="Maven: io.netty:netty-handler:4.1.112.Final" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-transport-native-unix-common:4.1.112.Final" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-transport:4.1.112.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.projectreactor:reactor-core:3.6.9" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-redis:3.3.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-keyvalue:3.3.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons:3.3.3" level="project" />

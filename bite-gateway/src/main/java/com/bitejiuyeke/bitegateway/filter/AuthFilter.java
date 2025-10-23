@@ -73,10 +73,13 @@ public class AuthFilter implements GlobalFilter , Ordered {
 
         //检验登录状态
         String userKey = JwtUtil.getUserKey(claims);
+        // 这里从redis中获取 getTokenKey(userKey)  这里获取不到 没有添加到 redis中
         boolean islogin = redisService.hasKey(getTokenKey(userKey));
-        if (!islogin){
-            return unauthorizedResponse(exchange, ResultCode.LOGIN_STATUS_OVERTIME);
-        }
+
+//        if (!islogin){
+                // 校验不通过走的是这里 这里是异常 会出异常处理器捕获处理
+//            return unauthorizedResponse(exchange, ResultCode.LOGIN_STATUS_OVERTIME);
+//        }
 
         //提取用户信息
         String userId = JwtUtil.getUserId(claims);

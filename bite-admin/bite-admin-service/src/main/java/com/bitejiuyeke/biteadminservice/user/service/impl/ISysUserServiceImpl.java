@@ -78,6 +78,7 @@ public class ISysUserServiceImpl implements ISysUserService {
             throw new ServiceException("密码加密错误，请确认后重新登录",
                     ResultCode.INVALID_PARA.getCode());
         }
+        //
         String passwordEncrypt = DigestUtil.sha256Hex(password);
         if (!passwordEncrypt.equals(sysUser.getPassword())) {
             throw new ServiceException("账号密码错误，请确认后重新登录",

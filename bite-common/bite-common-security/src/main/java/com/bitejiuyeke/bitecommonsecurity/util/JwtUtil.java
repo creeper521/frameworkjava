@@ -22,7 +22,7 @@ public class JwtUtil {
     public static String createToken(Map<String, Object> claims) {
         return Jwts.builder()
                 .setClaims(claims)
-                .signWith(SignatureAlgorithm.ES512, secret)
+                .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
     }
 

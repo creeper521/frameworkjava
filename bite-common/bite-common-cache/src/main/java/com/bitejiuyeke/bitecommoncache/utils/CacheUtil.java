@@ -46,9 +46,9 @@ public class CacheUtil {
                                       final Long timeout,
                                       final TimeUnit timeUnit){
         redisService.setCacheObject(key, value, timeout, timeUnit);
-        log.info("更新redis缓存" + key);
+        log.info("更新redis缓存 key: " + key +" value: "+value);
 
         cache.put(key, value);
-        log.info("更新本地缓存" + key);
+        log.info("更新本地缓存 key: " + key +" value: "+value);
     }
 }
