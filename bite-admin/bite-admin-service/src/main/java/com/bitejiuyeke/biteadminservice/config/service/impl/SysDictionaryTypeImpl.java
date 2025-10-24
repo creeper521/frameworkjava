@@ -2,9 +2,8 @@ package com.bitejiuyeke.biteadminservice.config.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.bitejiuyeke.biteadminapi.config.domain.dto.DictionaryDataDTO;
-import com.bitejiuyeke.biteadminapi.config.domain.dto.DictionaryTypeListReqDTO;
-import com.bitejiuyeke.biteadminapi.config.domain.dto.DictionaryTypeWriteReqDTO;
+import com.bitejiuyeke.biteadminapi.config.domain.dto.*;
+import com.bitejiuyeke.biteadminapi.config.domain.vo.DictionaryDataVO;
 import com.bitejiuyeke.biteadminapi.config.domain.vo.DictionaryTypeVO;
 import com.bitejiuyeke.biteadminservice.config.domain.entity.SysDictionaryData;
 import com.bitejiuyeke.biteadminservice.config.domain.entity.SysDictionaryType;
@@ -188,16 +187,6 @@ public class SysDictionaryTypeImpl implements ISysDictionaryService {
     }
 
     @Override
-    public DictionaryDataDTO selectDictDataByDataKey(String dataKey) {
-        // 1 根据字典数据业务主键查询字典数据表实体类对象
-        SysDictionaryData sysDictionaryData = sysDictionaryDataMapper.selectOne(new LambdaQueryWrapper<SysDictionaryData>().eq(SysDictionaryData::getDataKey, dataKey));
-        // 2 做对象转换
-        DictionaryDataDTO dictionaryDataDTO = new DictionaryDataDTO();
-        BeanUtils.copyProperties(sysDictionaryData, dictionaryDataDTO);
-        return dictionaryDataDTO;
-    }
-
-    @Override
     public DictionaryDataDTO getDicDataByKey(String dataKey) {
         // 1 根据字典数据业务主键查询字典数据表实体类对象
         SysDictionaryData sysDictionaryData = sysDictionaryDataMapper.selectOne(new LambdaQueryWrapper<SysDictionaryData>().eq(SysDictionaryData::getDataKey, dataKey));
@@ -219,5 +208,78 @@ public class SysDictionaryTypeImpl implements ISysDictionaryService {
             result.add(dictionaryDataDTO);
         }
         return result;
+    }
+
+    @Override
+    public Long addData(DictionaryDataAddReqDTO dictionaryDataAddReqDTO) {
+        if (sysDictionaryTypeMapper.selectOne(new LambdaQueryWrapper<SysDictionaryType>().eq(SysDictionaryType::getTypeKey, dictionaryDataAddReqDTO.getTypeKey())) == null) {
+            throw new ServiceException("字典类型不存在");
+        }
+        SysDictionaryData sysDictionaryData = sysDictionaryDataMapper.selectOne(new LambdaQueryWrapper<SysDictionaryData>()
+                .eq(SysDictionaryData::getValue, dictionaryDataAddReqDTO.getValue())
+                .or()
+                .eq(SysDictionaryData::getDataKey, dictionaryDataAddReqDTO.getDataKey())
+        );
+        if (sysDictionaryData != null) {
+            throw new ServiceException("字典数据键或值已存在");
+        }
+        sysDictionaryData = new SysDictionaryData();
+        sysDictionaryData.setDataKey(dictionaryDataAddReqDTO.getDataKey());
+        sysDictionaryData.setTypeKey(dictionaryDataAddReqDTO.getTypeKey());
+        if (dictionaryDataAddReqDTO.getSort() != null) {
+            sysDictionaryData.setSort(dictionaryDataAddReqDTO.getSort());
+        }
+        if (StringUtils.isNotBlank(dictionaryDataAddReqDTO.getRemark())) {
+            sysDictionaryData.setRemark(dictionaryDataAddReqDTO.getRemark());
+        }
+        sysDictionaryData.setValue(dictionaryDataAddReqDTO.getValue());
+        sysDictionaryDataMapper.insert(sysDictionaryData);
+        return sysDictionaryData.getId();
+    }
+
+    @Override
+    public BasePageVO<DictionaryDataVO> listData(DictionaryDataListReqDTO dictionaryDataListReqDTO) {
+        BasePageVO<DictionaryDataVO> result = new BasePageVO<>();
+        LambdaQueryWrapper<SysDictionaryData> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(SysDictionaryData::getTypeKey, dictionaryDataListReqDTO.getTypeKey());
+        if (StringUtils.isNotBlank(dictionaryDataListReqDTO.getValue())) {
+            queryWrapper.likeRight(SysDictionaryData::getValue, dictionaryDataListReqDTO.getValue());
+        }
+        queryWrapper.orderByAsc(SysDictionaryData::getSort);
+        queryWrapper.orderByAsc(SysDictionaryData::getId);
+        Page<SysDictionaryData> page = sysDictionaryDataMapper.selectPage(
+                new Page<>(dictionaryDataListReqDTO.getPageNo().longValue(), dictionaryDataListReqDTO.getPageSize().longValue()),
+                queryWrapper
+        );
+        result.setTotals(((Long)page.getTotal()).intValue());
+        result.setTotalPages(((Long)page.getPages()).intValue());
+        List<DictionaryDataVO> list = new ArrayList<>();
+        for (SysDictionaryData sysDictionaryData : page.getRecords()) {
+            DictionaryDataVO dictionaryDataVo = new DictionaryDataVO();
+            BeanUtils.copyProperties(sysDictionaryData, dictionaryDataVo);
+            list.add(dictionaryDataVo);
+        }
+        result.setList(list);
+        return result;
+    }
+
+    @Override
+    public Long editData(DictionaryDataEditReqDTO dictionaryDataEditReqDTO) {
+        SysDictionaryData sysDictionaryData = sysDictionaryDataMapper.selectOne(new LambdaQueryWrapper<SysDictionaryData>().eq(SysDictionaryData::getDataKey, dictionaryDataEditReqDTO.getDataKey()));
+        if (sysDictionaryData == null) {
+            throw new ServiceException("字典数据不存在");
+        }
+        if (sysDictionaryDataMapper.selectOne(new LambdaQueryWrapper<SysDictionaryData>().ne(SysDictionaryData::getDataKey, dictionaryDataEditReqDTO.getDataKey()).eq(SysDictionaryData::getValue, dictionaryDataEditReqDTO.getValue())) != null) {
+            throw new ServiceException("字典数据名称已存在");
+        }
+        sysDictionaryData.setValue(dictionaryDataEditReqDTO.getValue());
+        if (dictionaryDataEditReqDTO.getSort() != null) {
+            sysDictionaryData.setSort(dictionaryDataEditReqDTO.getSort());
+        }
+        if (StringUtils.isNotBlank(dictionaryDataEditReqDTO.getRemark())) {
+            sysDictionaryData.setRemark(dictionaryDataEditReqDTO.getRemark());
+        }
+        sysDictionaryDataMapper.updateById(sysDictionaryData);
+        return sysDictionaryData.getId();
     }
 }

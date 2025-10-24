@@ -77,7 +77,7 @@ public class AuthFilter implements GlobalFilter , Ordered {
         boolean islogin = redisService.hasKey(getTokenKey(userKey));
 
 //        if (!islogin){
-                // 校验不通过走的是这里 这里是异常 会出异常处理器捕获处理
+//            //校验不通过走的是这里 这里是异常 会出异常处理器捕获处理
 //            return unauthorizedResponse(exchange, ResultCode.LOGIN_STATUS_OVERTIME);
 //        }
 

@@ -6,6 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="1c4cb5ca-78b9-493b-8fc9-4d440bacf283" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bite-admin/bite-admin-service/src/main/java/com/bitejiuyeke/biteadminservice/map/service/impl/BiteMapServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bite-admin/bite-admin-service/src/main/java/com/bitejiuyeke/biteadminservice/map/service/impl/BiteMapServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bite-admin/bite-admin-service/target/classes/com/bitejiuyeke/biteadminservice/map/service/impl/BiteMapServiceImpl$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bite-admin/bite-admin-service/target/classes/com/bitejiuyeke/biteadminservice/map/service/impl/BiteMapServiceImpl$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bite-admin/bite-admin-service/target/classes/com/bitejiuyeke/biteadminservice/map/service/impl/BiteMapServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bite-admin/bite-admin-service/target/classes/com/bitejiuyeke/biteadminservice/map/service/impl/BiteMapServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bite-common/bite-common-security/src/main/java/com/bitejiuyeke/bitecommonsecurity/service/TokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bite-common/bite-common-security/src/main/java/com/bitejiuyeke/bitecommonsecurity/service/TokenService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bite-gateway/src/main/java/com/bitejiuyeke/bitegateway/filter/AuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/bite-gateway/src/main/java/com/bitejiuyeke/bitegateway/filter/AuthFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bite-gateway/target/classes/com/bitejiuyeke/bitegateway/filter/AuthFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/bite-gateway/target/classes/com/bitejiuyeke/bitegateway/filter/AuthFilter.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +23,8 @@
       <list>
         <option value="package-info" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -110,7 +116,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="应用程序.test">
+  <component name="RunManager" selected="应用程序.BiteGatewayApplication">
     <configuration name="BiteAdminServiceApplication" type="Application" factoryName="Application" nameIsGenerated="true">
       <envs>
         <env name="NACOS_ADDR" value="http://192.168.56.107:8848" />
@@ -284,6 +290,7 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.JsonUtilTests.string2ComplexList" />
+      <item itemvalue="JUnit.AESUtilTest.encryptHex" />
       <item itemvalue="应用程序.BiteAdminServiceApplication" />
       <item itemvalue="应用程序.BiteFileServiceApplication" />
       <item itemvalue="应用程序.BiteMstemplateServiceApplication" />
@@ -291,7 +298,6 @@
       <item itemvalue="应用程序.BiteMstemplateServiceApplication (1)" />
       <item itemvalue="应用程序.OSSFileServiceImpl" />
       <item itemvalue="应用程序.test" />
-      <item itemvalue="JUnit.AESUtilTest.encryptHex" />
     </list>
     <recent_temporary>
       <list>
@@ -599,7 +605,14 @@
       <option name="project" value="LOCAL" />
       <updated>1761034141737</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="up">
+      <created>1761202512384</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1761202512385</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -633,17 +646,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/bite-common/bite-common-security/src/main/java/com/bitejiuyeke/bitecommonsecurity/service/TokenService.java</url>
-          <line>59</line>
+          <line>56</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/bite-common/bite-common-security/src/main/java/com/bitejiuyeke/bitecommonsecurity/service/TokenService.java</url>
-          <line>67</line>
+          <line>64</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/bite-common/bite-common-security/src/main/java/com/bitejiuyeke/bitecommonsecurity/service/TokenService.java</url>
-          <line>72</line>
+          <line>69</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -653,28 +666,70 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/bite-gateway/src/main/java/com/bitejiuyeke/bitegateway/filter/AuthFilter.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/bite-gateway/src/main/java/com/bitejiuyeke/bitegateway/filter/AuthFilter.java</url>
-          <line>74</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/bite-gateway/src/main/java/com/bitejiuyeke/bitegateway/filter/AuthFilter.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/bite-gateway/src/main/java/com/bitejiuyeke/bitegateway/filter/AuthFilter.java</url>
           <line>121</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/bite-common/bite-common-redis/src/main/java/com/bitejiuyeke/bitecommonredis/service/RedisService.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="25" />
+          <url>file://$PROJECT_DIR$/bite-admin/bite-admin-service/src/main/java/com/bitejiuyeke/biteadminservice/map/service/impl/BiteMapServiceImpl.java</url>
+          <line>288</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bite-admin/bite-admin-service/src/main/java/com/bitejiuyeke/biteadminservice/map/service/impl/BiteMapServiceImpl.java</url>
+          <line>274</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bite-admin/bite-admin-service/src/main/java/com/bitejiuyeke/biteadminservice/map/service/impl/BiteMapServiceImpl.java</url>
+          <line>280</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bite-admin/bite-admin-service/src/main/java/com/bitejiuyeke/biteadminservice/map/service/impl/BiteMapServiceImpl.java</url>
+          <line>281</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bite-admin/bite-admin-service/src/main/java/com/bitejiuyeke/biteadminservice/map/service/impl/BiteMapServiceImpl.java</url>
+          <line>282</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bite-admin/bite-admin-service/src/main/java/com/bitejiuyeke/biteadminservice/map/service/impl/BiteMapServiceImpl.java</url>
+          <line>283</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bite-admin/bite-admin-service/src/main/java/com/bitejiuyeke/biteadminservice/map/service/impl/BiteMapServiceImpl.java</url>
+          <line>284</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/bite-admin/bite-admin-service/src/main/java/com/bitejiuyeke/biteadminservice/map/service/impl/BiteMapServiceImpl.java</url>
+          <line>266</line>
+          <properties class="com.bitejiuyeke.biteadminservice.map.service.impl.BiteMapServiceImpl" method="getHotCityList">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/bite-common/bite-common-security/src/main/java/com/bitejiuyeke/bitecommonsecurity/service/TokenService.java</url>
+          <line>156</line>
+          <properties class="com.bitejiuyeke.bitecommonsecurity.service.TokenService" method="setLoginUser">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/bite-common/bite-common-security/src/main/java/com/bitejiuyeke/bitecommonsecurity/service/TokenService.java</url>
+          <line>167</line>
+          <properties class="com.bitejiuyeke.bitecommonsecurity.service.TokenService" method="refreshToken">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

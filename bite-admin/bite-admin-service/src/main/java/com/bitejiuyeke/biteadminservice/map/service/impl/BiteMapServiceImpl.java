@@ -301,6 +301,7 @@ public class BiteMapServiceImpl implements IBiteMapService {
         BeanUtils.copyProperties(placeSearchReqDTO, suggestSearchDTO);
         suggestSearchDTO.setPageIndex(placeSearchReqDTO.getPageNo());
         suggestSearchDTO.setId(String.valueOf(placeSearchReqDTO.getId()));
+
         //调用地图位置查询接口
         PoiListDTO poiListDTO = mapProvider.searchQQMapPlaceByRegion(suggestSearchDTO);
         //做结果对象转换
