@@ -21,6 +21,6 @@ public interface DictionaryFeignClient {
     @GetMapping("/dictionary_data/key")
     DictionaryDataDTO getDicDataByKey(@RequestParam String dataKey);
 
-    @GetMapping("/dictionary_data/keys")
-    List<DictionaryDataDTO> getDictDataByDataKeys(@RequestParam List<String> dataKeys);
+    @PostMapping("/dictionary_data/keys")
+    List<DictionaryDataDTO> getDictDataByDataKeys(@RequestBody List<String> dataKeys);
 }

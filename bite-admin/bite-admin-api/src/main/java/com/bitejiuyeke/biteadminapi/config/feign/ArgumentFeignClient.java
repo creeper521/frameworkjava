@@ -4,6 +4,7 @@ import com.bitejiuyeke.biteadminapi.config.domain.dto.ArgumentDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public interface ArgumentFeignClient {
      * @return 参数对象
      */
     @PostMapping("/key")
-    ArgumentDTO getByConfigKey(@RequestBody String configKey);
+    ArgumentDTO getByConfigKey(@RequestParam String configKey);
 
     /**
      * 根据参数键查询参数对象

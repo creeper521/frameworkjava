@@ -83,16 +83,31 @@ public class DictionaryController implements DictionaryFeignClient {
         return R.ok(iSysDictionaryService.editData(dictionaryDataEditReqDTO));
     }
 
+    /**
+     * 获取某个字典类型下的所有字典数据
+     * @param typeKey 字典类型键
+     * @return 字典数据列表
+     */
     @Override
     public List<DictionaryDataDTO> selectDicDataByType(String typeKey) {
         return iSysDictionaryService.selectDicDataByType(typeKey);
     }
 
+    /**
+     * 获取多个字典类型下的所有字典数据
+     * @param typeKeys 字典类型键列表
+     * @return 哈希  字典类型键->字典数据列表
+     */
     @Override
     public Map<String, List<DictionaryDataDTO>> selectDicDataByTypes(List<String> typeKeys) {
         return iSysDictionaryService.selectDicDataByTypes(typeKeys);
     }
 
+    /**
+     * 根据字典数据业务主键获取字典数据对象
+     * @param dataKey 字典数据业务主键
+     * @return DictionaryDataDTO
+     */
     @Override
     public DictionaryDataDTO getDicDataByKey(String dataKey) {
         return iSysDictionaryService.getDicDataByKey(dataKey);

@@ -79,8 +79,8 @@ public class SysArgumentServiceImpl implements ISysArgumentService {
                 argumentListReqDTO.getPageNo().longValue(),
                 argumentListReqDTO.getPageSize().longValue()),
                 wrapper);
-        result.setTotals(Integer.parseInt(String.valueOf(page.getTotal())));
-        result.setTotalPages(Integer.parseInt(String.valueOf(page.getPages())));
+        result.setTotals((int) page.getTotal());
+        result.setTotalPages((int) page.getPages());
 
         List<ArgumentVO> list = new ArrayList<>();
         for (SysArgument sysArgument : page.getRecords()) {

@@ -34,7 +34,7 @@ public class SecurityUtil {
      * @return
      */
     private static String replaceTokenPrefix(String token) {
-        if(StringUtils.isNotEmpty( token) && token.startsWith(TokenConstants.PREFIX)){
+        if(StringUtils.isNotEmpty(token) && token.startsWith(TokenConstants.PREFIX)){
             return token.replaceFirst(TokenConstants.PREFIX, "");
         }
         return token;

@@ -116,7 +116,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="应用程序.BiteGatewayApplication">
+  <component name="RunManager" selected="JUnit.UserControllerTest.login">
     <configuration name="BiteAdminServiceApplication" type="Application" factoryName="Application" nameIsGenerated="true">
       <envs>
         <env name="NACOS_ADDR" value="http://192.168.56.107:8848" />
@@ -161,23 +161,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.bitejiuyeke.bitegateway.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BiteMstemplateServiceApplication (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <envs>
-        <env name="NACOS_ADDR" value="http://192.168.56.107:8848" />
-        <env name="RUN_ENV" value="dev" />
-      </envs>
-      <option name="MAIN_CLASS_NAME" value="com.bitejiuyeke.bitemstemplateservice.BiteMstemplateServiceApplication" />
-      <module name="bite-mstemplate-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bitejiuyeke.bitemstemplateservice.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -236,12 +219,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OSSFileServiceImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.bitejiuyeke.bitefileservice.service.impl.OSSFileServiceImpl" />
-      <module name="bite-file-service" />
+    <configuration name="BitePortalServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="NACOS_ADDR" value="http://192.168.56.107:8848" />
+        <env name="RUN_ENV" value="dev" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="com.bitejiuyeke.biteportalservice.BitePortalServiceApplication" />
+      <module name="bite-portal-service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.bitejiuyeke.bitefileservice.service.impl.*" />
+          <option name="PATTERN" value="com.bitejiuyeke.biteportalservice.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -288,6 +275,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UserControllerTest.login" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bite-portal-service" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="UserControllerTest" />
+      <option name="METHOD_NAME" value="login" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="JUnit.JsonUtilTests.string2ComplexList" />
       <item itemvalue="JUnit.AESUtilTest.encryptHex" />
@@ -295,17 +292,17 @@
       <item itemvalue="应用程序.BiteFileServiceApplication" />
       <item itemvalue="应用程序.BiteMstemplateServiceApplication" />
       <item itemvalue="应用程序.BiteGatewayApplication" />
-      <item itemvalue="应用程序.BiteMstemplateServiceApplication (1)" />
-      <item itemvalue="应用程序.OSSFileServiceImpl" />
       <item itemvalue="应用程序.test" />
+      <item itemvalue="应用程序.BitePortalServiceApplication" />
+      <item itemvalue="JUnit.UserControllerTest.login" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserControllerTest.login" />
+        <item itemvalue="应用程序.BitePortalServiceApplication" />
         <item itemvalue="应用程序.BiteGatewayApplication" />
         <item itemvalue="应用程序.test" />
         <item itemvalue="JUnit.AESUtilTest.encryptHex" />
-        <item itemvalue="应用程序.BiteMstemplateServiceApplication (1)" />
-        <item itemvalue="应用程序.OSSFileServiceImpl" />
       </list>
     </recent_temporary>
   </component>
@@ -612,7 +609,14 @@
       <option name="project" value="LOCAL" />
       <updated>1761202512385</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="up">
+      <created>1761287739788</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1761287739788</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -704,6 +708,21 @@
           <line>284</line>
           <option name="timeStamp" value="36" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bite-admin/bite-admin-service/src/main/java/com/bitejiuyeke/biteadminservice/config/service/impl/SysArgumentServiceImpl.java</url>
+          <line>81</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bite-admin/bite-admin-service/src/main/java/com/bitejiuyeke/biteadminservice/config/service/impl/SysArgumentServiceImpl.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bite-admin/bite-admin-service/src/main/java/com/bitejiuyeke/biteadminservice/config/service/impl/SysArgumentServiceImpl.java</url>
+          <line>77</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/bite-admin/bite-admin-service/src/main/java/com/bitejiuyeke/biteadminservice/map/service/impl/BiteMapServiceImpl.java</url>
           <line>266</line>
@@ -730,6 +749,24 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/bite-admin/bite-admin-service/src/main/java/com/bitejiuyeke/biteadminservice/config/service/impl/SysArgumentServiceImpl.java</url>
+          <line>68</line>
+          <properties class="com.bitejiuyeke.biteadminservice.config.service.impl.SysArgumentServiceImpl" method="list">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus-extension/3.5.7/mybatis-plus-extension-3.5.7.jar!/com/baomidou/mybatisplus/extension/plugins/pagination/Page.class</url>
+          <line>177</line>
+          <properties class="com.baomidou.mybatisplus.extension.plugins.pagination.Page" method="getPages">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="54" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

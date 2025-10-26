@@ -1,8 +1,12 @@
 package com.bitejiuyeke.biteadminapi.config.domain.vo;
 
+
+import lombok.Data;
+
 /**
  * 参数VO
  */
+@Data
 public class ArgumentVO {
     /**
      * 参数ID

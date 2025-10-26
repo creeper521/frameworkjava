@@ -50,6 +50,7 @@ public class SysUserController{
      * @param  sysUserListReqDTO
      * @return
      */
+    @PostMapping("/list")
     public R<List<SysUserVo>> getUserList(@RequestBody SysUserListReqDTO
                                                   sysUserListReqDTO) {
         List<SysUserDTO> sysUserDTOS =
@@ -59,6 +60,10 @@ public class SysUserController{
                 .collect(Collectors.toList()));
     }
 
+    /**
+     * 获取登录用户信息
+     * @return
+     */
     @GetMapping("/login_info/get")
     public R<SysUserLoginVO> getLoginUser(){
         return R.ok(sysUserService.getLoginUser().convertToVO());
