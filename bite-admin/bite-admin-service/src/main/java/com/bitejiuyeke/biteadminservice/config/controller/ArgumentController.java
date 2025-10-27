@@ -30,7 +30,7 @@ public class ArgumentController implements ArgumentFeignClient {
     }
 
     @GetMapping("/list")
-    public R<BasePageVO<ArgumentVO>> list(@Validated ArgumentListReqDTO argumentListReqDTO) {
+    public R<BasePageVO<ArgumentVO>> list(@RequestBody @Validated ArgumentListReqDTO argumentListReqDTO) {
         return R.ok(iSysArgumentService.list(argumentListReqDTO));
     }
 

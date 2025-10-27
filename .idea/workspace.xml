@@ -6,12 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1c4cb5ca-78b9-493b-8fc9-4d440bacf283" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bite-admin/bite-admin-service/src/main/java/com/bitejiuyeke/biteadminservice/map/service/impl/BiteMapServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bite-admin/bite-admin-service/src/main/java/com/bitejiuyeke/biteadminservice/map/service/impl/BiteMapServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bite-admin/bite-admin-service/target/classes/com/bitejiuyeke/biteadminservice/map/service/impl/BiteMapServiceImpl$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/bite-admin/bite-admin-service/target/classes/com/bitejiuyeke/biteadminservice/map/service/impl/BiteMapServiceImpl$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bite-admin/bite-admin-service/target/classes/com/bitejiuyeke/biteadminservice/map/service/impl/BiteMapServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bite-admin/bite-admin-service/target/classes/com/bitejiuyeke/biteadminservice/map/service/impl/BiteMapServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bite-common/bite-common-security/src/main/java/com/bitejiuyeke/bitecommonsecurity/service/TokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bite-common/bite-common-security/src/main/java/com/bitejiuyeke/bitecommonsecurity/service/TokenService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bite-gateway/src/main/java/com/bitejiuyeke/bitegateway/filter/AuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/bite-gateway/src/main/java/com/bitejiuyeke/bitegateway/filter/AuthFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bite-gateway/target/classes/com/bitejiuyeke/bitegateway/filter/AuthFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/bite-gateway/target/classes/com/bitejiuyeke/bitegateway/filter/AuthFilter.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +110,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.UserControllerTest.login">
+  <component name="RunManager" selected="应用程序.BiteGatewayApplication">
     <configuration name="BiteAdminServiceApplication" type="Application" factoryName="Application" nameIsGenerated="true">
       <envs>
         <env name="NACOS_ADDR" value="http://192.168.56.107:8848" />
@@ -288,19 +282,19 @@
     <list>
       <item itemvalue="JUnit.JsonUtilTests.string2ComplexList" />
       <item itemvalue="JUnit.AESUtilTest.encryptHex" />
+      <item itemvalue="JUnit.UserControllerTest.login" />
       <item itemvalue="应用程序.BiteAdminServiceApplication" />
       <item itemvalue="应用程序.BiteFileServiceApplication" />
       <item itemvalue="应用程序.BiteMstemplateServiceApplication" />
       <item itemvalue="应用程序.BiteGatewayApplication" />
       <item itemvalue="应用程序.test" />
       <item itemvalue="应用程序.BitePortalServiceApplication" />
-      <item itemvalue="JUnit.UserControllerTest.login" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.BiteGatewayApplication" />
         <item itemvalue="JUnit.UserControllerTest.login" />
         <item itemvalue="应用程序.BitePortalServiceApplication" />
-        <item itemvalue="应用程序.BiteGatewayApplication" />
         <item itemvalue="应用程序.test" />
         <item itemvalue="JUnit.AESUtilTest.encryptHex" />
       </list>
@@ -616,7 +610,14 @@
       <option name="project" value="LOCAL" />
       <updated>1761287739788</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="up">
+      <created>1761474429837</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1761474429837</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -767,6 +768,24 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/bite-admin/bite-admin-service/src/main/java/com/bitejiuyeke/biteadminservice/config/service/ISysArgumentService.java</url>
+          <line>29</line>
+          <properties class="com.bitejiuyeke.biteadminservice.config.service.ISysArgumentService" method="list">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/bite-admin/bite-admin-service/src/main/java/com/bitejiuyeke/biteadminservice/config/controller/ArgumentController.java</url>
+          <line>32</line>
+          <properties class="com.bitejiuyeke.biteadminservice.config.controller.ArgumentController" method="list">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="59" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
