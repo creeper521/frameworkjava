@@ -25,5 +25,5 @@ public class AppUserListReqDTO extends BasePageReqDTO implements Serializable {
     /**
      * 微信ID
      */
-    private String openID;
+    private String openId;
 }

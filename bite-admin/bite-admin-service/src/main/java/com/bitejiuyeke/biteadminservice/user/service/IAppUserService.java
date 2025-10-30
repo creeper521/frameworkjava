@@ -67,4 +67,5 @@ public interface IAppUserService {
      * @return
      */
     AppUserDTO findById(Long userId);
+
 }

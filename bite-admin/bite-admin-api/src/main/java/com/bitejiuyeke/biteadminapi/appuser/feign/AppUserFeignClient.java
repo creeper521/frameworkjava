@@ -1,9 +1,11 @@
 package com.bitejiuyeke.biteadminapi.appuser.feign;
 
 import com.bitejiuyeke.biteadminapi.appuser.domain.dto.AppUserDTO;
+import com.bitejiuyeke.biteadminapi.appuser.domain.dto.AppUserListReqDTO;
 import com.bitejiuyeke.biteadminapi.appuser.domain.dto.UserEditReqDTO;
 import com.bitejiuyeke.biteadminapi.appuser.domain.vo.AppUserVO;
 import com.bitejiuyeke.bitecommondomain.domain.R;
+import com.bitejiuyeke.bitecommondomain.domain.vo.BasePageVO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -73,4 +75,13 @@ public interface AppUserFeignClient {
      */
     @GetMapping("/id_find")
     R<AppUserVO> findById(@RequestParam Long userId);
+
+    /**
+     * 获取用户列表
+     * @param appUserListReqDTO 用户列表查询参数
+     * @return C端用户VO列表
+     */
+    @PostMapping("/list/search")
+    R<BasePageVO<AppUserVO>> getUserList(@RequestBody AppUserListReqDTO
+                                                 appUserListReqDTO);
 }

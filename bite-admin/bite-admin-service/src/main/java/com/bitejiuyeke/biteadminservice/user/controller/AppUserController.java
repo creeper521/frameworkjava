@@ -1,12 +1,16 @@
 package com.bitejiuyeke.biteadminservice.user.controller;
 
 import com.bitejiuyeke.biteadminapi.appuser.domain.dto.AppUserDTO;
+import com.bitejiuyeke.biteadminapi.appuser.domain.dto.AppUserListReqDTO;
 import com.bitejiuyeke.biteadminapi.appuser.domain.dto.UserEditReqDTO;
 import com.bitejiuyeke.biteadminapi.appuser.domain.vo.AppUserVO;
 import com.bitejiuyeke.biteadminapi.appuser.feign.AppUserFeignClient;
 import com.bitejiuyeke.biteadminservice.user.service.IAppUserService;
+import com.bitejiuyeke.bitecommoncore.domain.dto.BasePageDTO;
 import com.bitejiuyeke.bitecommondomain.domain.R;
+import com.bitejiuyeke.bitecommondomain.domain.vo.BasePageVO;
 import com.bitejiuyeke.bitecommondomain.exception.ServiceException;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -113,6 +117,21 @@ public class AppUserController implements AppUserFeignClient {
                         .map(AppUserDTO::convertToVO)
                         .collect(Collectors.toList())
         );
+    }
+
+    /**
+     * 获取用户列表
+     * @param appUserListReqDTO
+     * @return
+     */
+    @Override
+    public R<BasePageVO<AppUserVO>> getUserList(@RequestBody AppUserListReqDTO
+                                                 appUserListReqDTO) {
+        BasePageDTO<AppUserDTO> appUserDTOS =
+                appUserService.getUserList(appUserListReqDTO);
+        BasePageVO<AppUserVO> result = new BasePageVO<>();
+        BeanUtils.copyProperties(appUserDTOS, result);
+        return R.ok(result);
     }
 
 }

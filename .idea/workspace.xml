@@ -307,9 +307,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.BiteGatewayApplication" />
         <item itemvalue="应用程序.BiteMstemplateServiceApplication (1)" />
         <item itemvalue="应用程序.BitePortalServiceApplication" />
+        <item itemvalue="应用程序.BiteGatewayApplication" />
         <item itemvalue="JUnit.UserControllerTest.login" />
         <item itemvalue="应用程序.test" />
       </list>
@@ -639,7 +639,14 @@
       <option name="project" value="LOCAL" />
       <updated>1761562535440</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="up">
+      <created>1761816421201</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1761816421201</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -661,20 +668,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/bite-admin/bite-admin-service/src/main/java/com/bitejiuyeke/biteadminservice/user/controller/SysUserController.java</url>
-          <line>31</line>
-          <properties class="com.bitejiuyeke.biteadminservice.user.controller.SysUserController" method="login">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/bite-admin/bite-admin-service/src/main/java/com/bitejiuyeke/biteadminservice/user/controller/SysUserController.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/bite-admin/bite-admin-service/src/main/java/com/bitejiuyeke/biteadminservice/user/service/impl/ISysUserServiceImpl.java</url>
           <line>59</line>
