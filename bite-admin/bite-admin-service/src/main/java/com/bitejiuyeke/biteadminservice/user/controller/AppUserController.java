@@ -29,8 +29,11 @@ public class AppUserController implements AppUserFeignClient {
     @Autowired
     public IAppUserService appUserService;
 
-//    @Value("${appuser.info.default-Avatar}")
-//    private String defaultAvatar;
+    /**
+     * 默认头像
+     */
+    @Value("${appuser.info.defaultAvatar}")
+    private String defaultAvatar;
 
     /**
      * 通过openId查询用户信息

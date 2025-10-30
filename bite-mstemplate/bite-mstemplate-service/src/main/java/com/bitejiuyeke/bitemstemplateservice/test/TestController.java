@@ -1,32 +1,32 @@
-
-package com.bitejiuyeke.bitemstemplateservice.test;
-
-import com.bitejiuyeke.bitecommondomain.domain.R;
-
-import com.bitejiuyeke.bitecommondomain.domain.ResultCode;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
-
-@RestController
-@RestControllerAdvice
-@Slf4j
-@RequestMapping("/test")
-public class TestController {
-    @GetMapping("/info")
-    public void info(){
-        log.info("测试");
-    }
-
-    @GetMapping("/result")
-    public R<Void> result(int id) {
-        if (id < 0) {
-            return R.fail();
-        }
-        return R.ok();
-    }
+//
+//package com.bitejiuyeke.bitemstemplateservice.test;
+//
+//import com.bitejiuyeke.bitecommondomain.domain.R;
+//
+//import com.bitejiuyeke.bitecommondomain.domain.ResultCode;
+//import lombok.extern.slf4j.Slf4j;
+//import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RestController;
+//import org.springframework.web.bind.annotation.RestControllerAdvice;
+//
+//@RestController
+//@RestControllerAdvice
+//@Slf4j
+//@RequestMapping("/test")
+//public class TestController {
+//    @GetMapping("/info")
+//    public void info(){
+//        log.info("测试");
+//    }
+//
+//    @GetMapping("/result")
+//    public R<Void> result(int id) {
+//        if (id < 0) {
+//            return R.fail();
+//        }
+//        return R.ok();
+//    }
 
 
 //    @GetMapping("/exception")
@@ -46,4 +46,4 @@ public class TestController {
 
 
 
-}
+//}

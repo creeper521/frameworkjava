@@ -96,7 +96,7 @@ public class OSSFileServiceImpl implements IFileService {
             Map<String, Object> policy = new HashMap<>();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern(OSSCustomConstants.SIGN_EXPIRE_TIME_FORMAT)
                     .withZone(java.time.ZoneOffset.UTC);
-            String expiration = formatter.format(now.plusSeconds(ossProperties.getExpre()));
+            String expiration = formatter.format(now.plusSeconds(ossProperties.getExpire()));
             policy.put("expiration", expiration);
 
             List<Object> conditions = new ArrayList<>();

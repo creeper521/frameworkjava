@@ -13,11 +13,27 @@ public interface IUserService {
      */
     TokenDTO login(LoginDTO loginDTO);
 
+    /**
+     * 发送验证码
+     * @param phone
+     * @return
+     */
     String sendCode(String phone);
 
+    /**
+     * 编辑用户
+     * @param userEditReqDTO
+     */
     void edit(UserEditReqDTO userEditReqDTO);
 
+    /**
+     * 获取当前登录用户
+     * @return
+     */
     UserDTO getLoginUser();
 
+    /**
+     * 登出
+     */
     void logout();
 }

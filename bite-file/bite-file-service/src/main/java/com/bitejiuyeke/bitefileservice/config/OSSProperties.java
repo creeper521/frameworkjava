@@ -48,7 +48,7 @@ public class OSSProperties {
      */
     private String pathPrefix;
 
-    private Integer expre;
+    private Integer expire;
 
     private Integer minLen;
 

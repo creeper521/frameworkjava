@@ -69,6 +69,8 @@ public class TokenService {
         TokenDTO tokenDTO = new TokenDTO();
         tokenDTO.setAccessToken(JwtUtil.createToken(claimMap));
         tokenDTO.setExpires(EXPIRE_TIME);
+        // redis存储用户信息
+        redisService.setCacheObject(getTokenKey(String.valueOf(loginUserDTO.getUserId())), loginUserDTO, EXPIRE_TIME, TimeUnit.MINUTES);
         return tokenDTO;
     }
 
